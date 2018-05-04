@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "trouble ticket manager",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Hugo Cunha",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^2.0.0"
+  }
+}
