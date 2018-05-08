@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "TDIN api server",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huguinho27/TDIN-PROJ2.git"
+  },
+  "keywords": [
+    "server",
+    "rest",
+    "api",
+    "tdin"
+  ],
+  "author": "nuno & hugo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huguinho27/TDIN-PROJ2/issues"
+  },
+  "homepage": "https://github.com/huguinho27/TDIN-PROJ2#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.7"
+  }
+}
