@@ -13,11 +13,10 @@
   <body>
         
     <div class="login-form">
-        <!--<form action="/actions/login.php" method="post"> -->
-        <form action="mainWindow.html">
+        <form id="loginform" action="register::x">
             <h2 class="text-center">Login</h2>       
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
+                <input type="email" class="form-control" placeholder="E-mail" required="required">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password" required="required">
@@ -26,9 +25,10 @@
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
             </div>     
         </form>
-        <p class="text-center"><a href="#">Create an Account</a></p>
+        <p class="text-center"><a href="register.html">Create an Account</a></p>
     </div>
 
+    <script src="../jscript/register.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
