@@ -11,52 +11,109 @@
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="mainWindow.html">Home</a>
         <a href="index.html">
-          <button class="btn btn-outline-success my-2 my-sm-0">Logout</button>
-      </a>
+          <button class="btn btn-outline-success">Logout</button>
+        </a>
     </nav>
 
-  <div class="addticketbutton">
-    <div class="row">
-        <div class="col-md-3 offset-md-1">
-            <a href="#" class="btn btn-info btn-lg">
-                <span class="glyphicon glyphicon-plus"></span> Add Ticket 
-            </a>
+    <div class="addticketbutton">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="addTicket.html" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span> Add New Ticket 
+                </a>
+            </div>
         </div>
     </div>
-  </div>
 
-  <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>My Tickets</h5>
+                <div class="panel panel-default">
+                    <div class="ticketsList">
+                        <div class="list-group">
+                            <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Title of Ticket</h5>
+                                <small>Unsolved</small>
+                                </div>
+                                <p class="mb-1">Small sample of message body of the ticket.</p>
+                            </a>
+                            <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Title of Ticket</h5>
+                                <small>Solved</small>
+                                </div>
+                                <p class="mb-1">Small sample of message body of the ticket.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h5>My Department Tickets</h5>
+                <div class="panel panel-default">
+                    <div class="ticketsList">
+                        <div class="list-group">
+                            <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Title of Ticket</h5>
+                                <small>Unsolved</small>
+                                </div>
+                                <p class="mb-1">Small sample of message body of the ticket.</p>
+                            </a>
+                            <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Title of Ticket</h5>
+                                <small>Unsolved</small>
+                                </div>
+                                <p class="mb-1">Small sample of message body of the ticket.</p>
+                            </a>
+                            <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Title of Ticket</h5>
+                                <small>Solved</small>
+                                </div>
+                                <p class="mb-1">Small sample of message body of the ticket.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="container">
+        <h5>Tickets</h5>
         <div class="panel panel-default">
             <div class="ticketsList">
                 <div class="list-group">
                     <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
+                        <h5 class="mb-1">Title of Ticket</h5>
                         <small>Unsolved</small>
                         </div>
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        <small>Donec id elit non mi porta.</small>
+                        <p class="mb-1">Small sample of message body of the ticket.</p>
                     </a>
                     <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
+                        <h5 class="mb-1">Title of Ticket</h5>
                         <small>Unsolved</small>
                         </div>
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        <small class="text-muted">Donec id elit non mi porta.</small>
+                        <p class="mb-1">Small sample of message body of the ticket.</p>
                     </a>
                     <a href="viewTicket.html" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
+                        <h5 class="mb-1">Title of Ticket</h5>
                         <small>Solved</small>
                         </div>
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        <small class="text-muted">Donec id elit non mi porta.</small>
+                        <p class="mb-1">Small sample of message body of the ticket.</p>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

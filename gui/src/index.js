@@ -13,7 +13,8 @@ let addWindow;
 // Listen for app to be ready
 app.on('ready', function(){
   // Create new window
-  mainWindow = new BrowserWindow({});
+  mainWindow = new BrowserWindow({width: 800, height: 650});
+  mainWindow.setResizable(false);
   // Load html in window
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'mainWindow.html'),
