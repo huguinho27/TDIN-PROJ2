@@ -17,8 +17,7 @@ mongo.connectToServer((err) =>
     else
     {
         console.log("Connected to MongoDB");
-
-        //TODO: Write initializers here
+        mongo.ensureUsersIndex();
     }
 });
 
