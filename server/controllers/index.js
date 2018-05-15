@@ -1,13 +1,16 @@
 const routes = require('express').Router();
+const auth = require('./auth');
 
-routes.get('*', (req, res, next) =>
+// TEST ONLY
+routes.get('/', (req, res, next) =>
 {
-    res.send("hello");
+    res.send("get working");
+});
+routes.post('/', (req, res, next) =>
+{
+    res.send("post working");
 });
 
-routes.post('*', (req, res, next) =>
-{
-    res.send("hello");
-});
+routes.use('/auth', auth);
 
 module.exports = routes;
