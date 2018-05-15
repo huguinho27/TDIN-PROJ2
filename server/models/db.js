@@ -63,19 +63,19 @@ module.exports =
 
         _db.collection(usersCollection).findOne({'email':email}, (err, res) =>
         {
-            if(err) callback('User does not exist', null);
+            if(err === null && res === null) callback('User does not exist', null);
             else
                 bcrypt.compare(password, res.password, (err1, res1) =>
                 {
                     if(err1) callback('Password does not match', null);
-                    else callback(null, {'email': email, 'name':res.name, 'department': res.department});
+                    else callback(null, {'email': email, 'name':res.name, 'department': res.department, 'id':res._id});
                 });
         });
     },
 
-    getTroubleTicketsByAuthor: (data, callback) =>
+    getTroubleTicketsByEmail: (data, callback) =>
     {
-        _db.collection(troubleTicketsCollection).find({'author':data.email}).toArray((err, docs) =>
+        _db.collection(troubleTicketsCollection).find({'email':data.email}).toArray((err, docs) =>
         {
             callback(err, docs);
         });
@@ -83,7 +83,7 @@ module.exports =
 
     getTroubleTicketsBySolver: (data, callback) =>
     {
-        _db.collection(troubleTicketsCollection).find({'solver':data.email}).toArray((err, docs) =>
+        _db.collection(troubleTicketsCollection).find({'solverId':data.solverId}).toArray((err, docs) =>
         {
             callback(err, docs);
         });
@@ -91,6 +91,7 @@ module.exports =
 
     getTroubleTicketsNotAssigned: (callback) =>
     {
+
         _db.collection(troubleTicketsCollection).find({'state':'unassigned'}).toArray((err, docs) =>
         {
             callback(err, docs);
@@ -99,29 +100,96 @@ module.exports =
 
     createTroubleTicket: (data, callback) =>
     {
-        // TODO: implement
+        _db.collection(troubleTicketsCollection).insertOne(
+            {
+                'email': data.email,
+                'name': data.name,
+                'title': data.title,
+                'description': data.description,
+                'date': (new Date).getTime(),
+                'state': 'unassigned',
+            },
+            (err, res) =>
+            {
+                if(err === null)
+                    callback(null, res);
+                else
+                    callback('Failed to Create new Ticket', null);
+            });
     },
 
     assignSolverToTroubleTicket: (data, callback) =>
     {
-        //TODO: implement
-    },
-
-    assignSecondaryQuestionToTroubleTicket: (data, callback) =>
-    {
-        //TODO: implement
+        _db.collection(troubleTicketsCollection).updateOne(
+            {'_id': new mongo.ObjectId(data.id)},
+            {$set: {'solverId': data.solverId, 'solverName':data.solverName, 'state':'assigned'}},
+            (err, res) =>
+            {
+                if(err === null)
+                    callback(null, res);
+                else
+                    callback('Failed to assign solver to ticket', null);
+            });
     },
 
     createSecondaryQuestion: (data, callback) =>
     {
-        //TODO: implement
+        _db.collection(secondaryTicketsCollection).insertOne(
+            {
+                'title':data.title,
+                'description':data.description,
+                'troubleTicketId': data.troubleTicketId,
+                'state':'waiting'
+            },
+            (err, res) =>
+            {
+                if(err !== null)
+                    callback('Failed to create Secondary Question', null);
+                else
+                    _db.collection(troubleTicketsCollection).updateOne(
+                        {'_id': new mongo.ObjectId(data.troubleTicketId),'state': {$not: 'solved'}},
+                        {$set: {'state':'waiting'}},
+                        (err1, res1) =>
+                        {
+                            if(res1.modifiedCount < 1)
+                                callback('Failed to update trouble to waiting, probably is solved already', null);
+                            else if(err1 === null)
+                                callback(null, res);
+                            else
+                                callback('Failed to update trouble ticket to waiting', null);
+                        }
+                    );
+            }
+        );
     },
 
-    solveSecondaryQuestionAndUpdateTroubleTicket: (data, callback) =>
+    solveSecondaryQuestion: (data, callback) =>
     {
-        //TODO: implement
-        //NOTE: this one will be tough....
+        _db.collection(secondaryTicketsCollection).updateOne(
+            {'_id': new mongo.ObjectId(data.id)},
+            {$set: {'answer':data.answer, 'state':'solved'}},
+            (err, res) =>
+            {
+                if(err === null)
+                    callback(null, res);
+                else
+                    callback('Failed to solve Secondary Question', null);
+            }
+        )
+    },
+
+    solveTroubleTicket: (data, callback) =>
+    {
+        _db.collection(troubleTicketsCollection).updateOne(
+            {'_id': new mongo.ObjectId(data.id)},
+            {$set: {'answer':data.answer, 'state':'solved'}},
+            (err, res) =>
+            {
+                if(err === null)
+                    callback(null, res);
+                else
+                    callback('Failed to solve Trouble Ticket', null);
+            }
+        )
     }
-
-
 };
