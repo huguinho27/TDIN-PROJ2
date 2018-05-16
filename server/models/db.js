@@ -16,7 +16,7 @@ module.exports =
     connectToServer: (callback) => {
         mongo.MongoClient.connect(mongoURL, (err, db) => {
             _db = db.db(mongoDB);
-            return callback(err);
+            return callback(err, null);
         });
     },
 
@@ -184,7 +184,7 @@ module.exports =
         _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.troubleTicketId}).toArray((err, docs) =>
         {
            if(err)
-               callback('Could not retrieve Secondary Tickets');
+               callback('Could not retrieve Secondary Tickets', null);
            else
                {
                    docs.forEach((obj) =>

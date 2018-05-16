@@ -32,7 +32,7 @@ module.exports =
                 else
                 {
                     //console.log(result.insertedId); //this is how u get the insertedId
-                    res.send({'error': 0, 'message': 'OK', 'userId': result._id});
+                    res.send({'error': 0, 'message': 'OK', 'insertedId': result.insertedId});
                 }
             });
         }
