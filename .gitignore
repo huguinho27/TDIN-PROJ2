@@ -1,3 +1,6 @@
-gui/node_modules
 server/node_modules
 .idea
+.git
+gui/.vs
+gui/*/bin
+gui/*/obj
