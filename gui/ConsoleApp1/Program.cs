@@ -6,31 +6,42 @@ using System.Web.Script.Serialization;
 
 public class WebRequestPost
 {
+    const string endpoint = "http://localhost:3000";
 
+    /**
+     * This is only a test to show how it is done!
+     * ALSO!!!!!!!!!!!! Feel free to test stuff here... You will need it
+     */
     [STAThread]
     static void Main()
     {
-        RegisterRequest registerRequest = new RegisterRequest();
-        registerRequest.email = "un@asnf.com";
+        RequestRegister registerRequest = new RequestRegister();
+        registerRequest.email = "sssun@asnf.com";
         registerRequest.name = "Nuno Neto";
         registerRequest.department = "1";
         registerRequest.password = "12345678";
         registerRequest.confirmPassword = "12345678";
 
-        makeRequest("/auth/register", registerRequest);
+        ResponseRegister response = (ResponseRegister)makeRequest<ResponseRegister>("/auth/register", registerRequest);
+
+        Console.WriteLine(response.error + " " + response.message + " " + response.insertedId);
     }
 
-    public static void makeRequest(string APIMethod, Object body)
+    /**
+     * Use this function to make a single request
+     * APIMethod: api method to call, eg: /auth/register
+     * body: Body of request, eg: {id:1234, email:344@g.com}
+     */
+    public static Object makeRequest<T>(string APIMethod, Object body)
     {
         //Criar o Web Request
-        WebRequest webRequest = WebRequest.Create("http://localhost:3000" + APIMethod);
+        WebRequest webRequest = WebRequest.Create(endpoint + APIMethod);
         webRequest.ContentType = "application/json";
         webRequest.Method = "POST";
 
         //Serializaçao de Objeto para JSON
         JavaScriptSerializer serializer = new JavaScriptSerializer();
         string request = serializer.Serialize(body);
-        Console.WriteLine(request);
 
         //Conversao de conteudo para bytes
         byte[] requestData = Encoding.ASCII.GetBytes(request);
@@ -56,39 +67,45 @@ public class WebRequestPost
         webResponse.Close();
 
         //Deserializaçao
-        Console.WriteLine(responseData);
-        Response response = serializer.Deserialize<Response>(responseData);
-        Console.WriteLine(response.error + " " + response.message);
-
-        if(response.message == null)
-            Console.WriteLine("null ó mano");
-        else
-            Console.WriteLine("not null ó mano");
-
-        Console.ReadLine();
+        return serializer.Deserialize<T>(responseData);
     }
 }
 
-//Response
+/**
+ * REQUEST CLASSES
+ */
+/*
+ * Generic Request, not possible to use 
+ */
+public abstract class Request{}
+public class RequestRegister : Request
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string department { get; set; }
+    public string password { get; set; }
+    public string confirmPassword { get; set; }
+}
+
+
+/**
+ * RESPONSE CLASSES
+ */
+/*
+ * Generic Response, at least these two paramethers will exist in every Response
+ */
 public class Response
 {
     public string error { get; set; }
     public string message { get; set; }
 }
-public class RegisterResponse : Response{}
 
-
-
-//Request
-public abstract class Request{}
-public class RegisterRequest : Request
+public class ResponseRegister : Response
 {
-    public string department { get; set; }
-    public string email { get; set; }
-    public string name { get; set; }
-    public string password { get; set; }
-    public string confirmPassword { get; set; }
-
+    public string insertedId { get; set; }
 }
+
+
+
 
 
