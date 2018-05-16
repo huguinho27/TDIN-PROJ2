@@ -11,6 +11,9 @@ module.exports =
         const password = req.body.password;
         const confirmPassword = req.body.confirmPassword;
 
+        console.log(email, name, department, password, confirmPassword);
+        console.log(req.body);
+
         if(email === undefined || name === undefined || department === undefined || password === undefined || confirmPassword === undefined) {
             res.send({'error': 1, 'string': 'Missing parameters' });
         }

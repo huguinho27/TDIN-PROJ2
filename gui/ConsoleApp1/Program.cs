@@ -2,117 +2,93 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using WindowsFormsApp1;
-using System.Windows.Forms;
-using System.Messaging;
+using System.Web.Script.Serialization;
 
-namespace ConsoleProgram
+public class WebRequestPost
 {
-    public class Order
+
+    [STAThread]
+    static void Main()
     {
-        public int orderId;
-        public string subject;
-        public string text;
-        public DateTime orderTime;
-    };
+        RegisterRequest registerRequest = new RegisterRequest();
+        registerRequest.email = "un@asnf.com";
+        registerRequest.name = "Nuno Neto";
+        registerRequest.department = "1";
+        registerRequest.password = "12345678";
+        registerRequest.confirmPassword = "12345678";
 
-    public class WebRequestPost
+        makeRequest("/auth/register", registerRequest);
+    }
+
+    public static void makeRequest(string APIMethod, Object body)
     {
-        /*[STAThread]
-        public static void Main()
+        //Criar o Web Request
+        WebRequest webRequest = WebRequest.Create("http://localhost:3000" + APIMethod);
+        webRequest.ContentType = "application/json";
+        webRequest.Method = "POST";
+
+        //Serializaçao de Objeto para JSON
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        string request = serializer.Serialize(body);
+        Console.WriteLine(request);
+
+        //Conversao de conteudo para bytes
+        byte[] requestData = Encoding.ASCII.GetBytes(request);
+        webRequest.ContentLength = requestData.Length;
+
+        //Escrever contéudo
+        using (var stream = webRequest.GetRequestStream())
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            try { Application.Run(new Register()); }
-            catch (Exception) { }*/
-
-
-            /*WebRequest request = WebRequest.Create("http://localhost:3000");
-            request.Method = "POST";
-
-            WebResponse response = request.GetResponse();
-            using (Stream stream = response.GetResponseStream())
-            {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                String responseString = reader.ReadToEnd();
-                Console.WriteLine(responseString);
-            }
-            response.Close();
-            Console.ReadLine();
-        }*/
-            
-        public class MyNewQueue
-        {
-            public static void Main()
-            {
-                // Create a new instance of the class.
-                MyNewQueue myNewQueue = new MyNewQueue();
-
-                // Send a message to a queue.
-                myNewQueue.SendMessage();
-
-                // Receive a message from a queue.
-                myNewQueue.ReceiveMessage();
-
-                return;
-            }
-
-            public void SendMessage()
-            {
-                Order sentOrder = new Order();
-                sentOrder.orderId = 3;
-                sentOrder.orderTime = DateTime.Now;
-                sentOrder.subject = "como apagar um ficheiro?";
-                sentOrder.text = "como e que eu apago um ficheiro, pah?";
-
-                // Connect to a queue on the local computer.
-                MessageQueue myQueue = new MessageQueue(@".\private$\myQueue");
-
-                // Send the Order to the queue.
-                myQueue.Send(sentOrder);
-                return;
-            }
-
-            public void ReceiveMessage()
-            {
-                // Connect to the a queue on the local computer.
-                MessageQueue myQueue = new MessageQueue(@".\private$\myQueue");
-
-                // Set the formatter to indicate body contains an Order.
-                myQueue.Formatter = new XmlMessageFormatter(new Type[] {typeof(Order)});
-
-                try
-                {
-                    // Receive and format the message. 
-                    System.Messaging.Message myMessage = myQueue.Receive();
-                    Order myOrder = (Order)myMessage.Body;
-
-                    // Display message information.
-                    Console.WriteLine("Order ID: " +
-                        myOrder.orderId.ToString());
-                    Console.WriteLine("Subject: " +
-                        myOrder.subject);
-                    Console.WriteLine("Text: " +
-                        myOrder.text);
-                    Console.WriteLine("Sent: " +
-                        myOrder.orderTime.ToString());
-                }
-
-                catch (MessageQueueException)
-                {
-                    // Handle Message Queuing exceptions.
-                }
-
-                // Handle invalid serialization format.
-                catch (InvalidOperationException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                Console.ReadLine();
-                return;
-            }
+            stream.Write(requestData, 0, requestData.Length);
         }
+
+        //Enviar
+        WebResponse webResponse = webRequest.GetResponse();
+
+        //Receber e fechar
+        string responseData;
+        using (Stream stream = webResponse.GetResponseStream())
+        {
+            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            responseData = reader.ReadToEnd();
+            
+        }
+        webResponse.Close();
+
+        //Deserializaçao
+        Console.WriteLine(responseData);
+        Response response = serializer.Deserialize<Response>(responseData);
+        Console.WriteLine(response.error + " " + response.message);
+
+        if(response.message == null)
+            Console.WriteLine("null ó mano");
+        else
+            Console.WriteLine("not null ó mano");
+
+        Console.ReadLine();
     }
 }
+
+//Response
+public class Response
+{
+    public string error { get; set; }
+    public string message { get; set; }
+}
+public class RegisterResponse : Response{}
+
+
+
+//Request
+public abstract class Request{}
+public class RegisterRequest : Request
+{
+    public string department { get; set; }
+    public string email { get; set; }
+    public string name { get; set; }
+    public string password { get; set; }
+    public string confirmPassword { get; set; }
+
+}
+
+

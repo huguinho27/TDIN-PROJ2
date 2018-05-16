@@ -1,0 +1,11 @@
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\obj\Debug\Communication.csprojResolveAssemblyReference.cache
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\obj\Debug\Communication.csproj.CoreCompileInputs.cache
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\obj\Debug\Communication.csproj.CopyComplete
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\huguinho27\Desktop\gits\TDIN-PROJ2\gui\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
