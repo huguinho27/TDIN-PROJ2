@@ -180,16 +180,30 @@ module.exports =
 
     solveTroubleTicket: (data, callback) =>
     {
-        _db.collection(troubleTicketsCollection).updateOne(
-            {'_id': new mongo.ObjectId(data.id)},
-            {$set: {'answer':data.answer, 'state':'solved'}},
-            (err, res) =>
-            {
-                if(err === null)
-                    callback(null, res);
-                else
-                    callback('Failed to solve Trouble Ticket', null);
-            }
-        )
+
+        _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.troubleTicketId}).toArray((err, docs) =>
+        {
+           if(err)
+               callback('Could not retrieve Secondary Tickets');
+           else
+               {
+                   docs.forEach((obj) =>
+                   {
+                       if(obj.status === 'waiting')
+                           callback('Some secondary tickets are not yet solved', null);
+                   });
+
+                   _db.collection(troubleTicketsCollection).updateOne(
+                       {'_id': new mongo.ObjectId(data.id)},
+                       {$set: {'answer': data.answer, 'state': 'solved'}},
+                       (err, res) => {
+                           if (err === null)
+                               callback(null, res);
+                           else
+                               callback('Failed to solve Trouble Ticket', null);
+                       }
+               );
+           }
+        });
     }
 };
