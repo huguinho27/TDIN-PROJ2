@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿namespace EnterpriseWorker
 {
-    partial class createSubTicket
+    partial class createTicketWorker
     {
         /// <summary>
         /// Required designer variable.
@@ -34,102 +34,76 @@
             this.subjectTextBox = new System.Windows.Forms.TextBox();
             this.subjectLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.departmentLabel = new System.Windows.Forms.Label();
-            this.departmentComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(603, 261);
+            this.submitButton.Location = new System.Drawing.Point(571, 214);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(88, 42);
-            this.submitButton.TabIndex = 22;
+            this.submitButton.TabIndex = 32;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(157, 168);
+            this.descriptionTextBox.Location = new System.Drawing.Point(125, 121);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(534, 64);
-            this.descriptionTextBox.TabIndex = 18;
+            this.descriptionTextBox.TabIndex = 31;
             // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(45, 168);
+            this.descriptionLabel.Location = new System.Drawing.Point(13, 121);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
-            this.descriptionLabel.TabIndex = 17;
+            this.descriptionLabel.TabIndex = 30;
             this.descriptionLabel.Text = "Description";
             // 
             // subjectTextBox
             // 
-            this.subjectTextBox.Location = new System.Drawing.Point(157, 126);
+            this.subjectTextBox.Location = new System.Drawing.Point(125, 79);
             this.subjectTextBox.Name = "subjectTextBox";
             this.subjectTextBox.Size = new System.Drawing.Size(534, 20);
-            this.subjectTextBox.TabIndex = 16;
+            this.subjectTextBox.TabIndex = 29;
             // 
             // subjectLabel
             // 
             this.subjectLabel.AutoSize = true;
             this.subjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subjectLabel.Location = new System.Drawing.Point(71, 126);
+            this.subjectLabel.Location = new System.Drawing.Point(39, 79);
             this.subjectLabel.Name = "subjectLabel";
             this.subjectLabel.Size = new System.Drawing.Size(63, 20);
-            this.subjectLabel.TabIndex = 15;
+            this.subjectLabel.TabIndex = 28;
             this.subjectLabel.Text = "Subject";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(221, 9);
+            this.label1.Location = new System.Drawing.Point(241, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(309, 29);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Create Secondary Question";
+            this.label1.Size = new System.Drawing.Size(248, 29);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Create Trouble Ticket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // departmentLabel
-            // 
-            this.departmentLabel.AutoSize = true;
-            this.departmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentLabel.Location = new System.Drawing.Point(40, 83);
-            this.departmentLabel.Name = "departmentLabel";
-            this.departmentLabel.Size = new System.Drawing.Size(94, 20);
-            this.departmentLabel.TabIndex = 25;
-            this.departmentLabel.Text = "Department";
-            // 
-            // departmentComboBox
-            // 
-            this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Items.AddRange(new object[] {
-            "Batata",
-            "Potato",
-            "Potateedede"});
-            this.departmentComboBox.Location = new System.Drawing.Point(157, 85);
-            this.departmentComboBox.Name = "departmentComboBox";
-            this.departmentComboBox.Size = new System.Drawing.Size(121, 21);
-            this.departmentComboBox.TabIndex = 26;
-            // 
-            // createSubTicket
+            // createTicketWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 337);
-            this.Controls.Add(this.departmentComboBox);
-            this.Controls.Add(this.departmentLabel);
+            this.ClientSize = new System.Drawing.Size(690, 285);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.subjectTextBox);
             this.Controls.Add(this.subjectLabel);
             this.Controls.Add(this.label1);
-            this.Name = "createSubTicket";
-            this.Text = "createSubTicket";
+            this.Name = "createTicketWorker";
+            this.Text = "createTicketWorker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +116,5 @@
         private System.Windows.Forms.TextBox subjectTextBox;
         private System.Windows.Forms.Label subjectLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label departmentLabel;
-        private System.Windows.Forms.ComboBox departmentComboBox;
     }
 }

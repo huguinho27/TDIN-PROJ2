@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.statusTextBox = new System.Windows.Forms.TextBox();
+            this.answerLabel = new System.Windows.Forms.Label();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.answerTextBox = new System.Windows.Forms.TextBox();
+            this.issueSubTicketButton = new System.Windows.Forms.Button();
+            this.subTicketsList = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.subTicketLabel = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,146 +58,145 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ticket";
             // 
-            // label2
+            // titleLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(93, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Title";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(93, 118);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(38, 20);
+            this.titleLabel.TabIndex = 1;
+            this.titleLabel.Text = "Title";
             // 
-            // textBox1
+            // titleTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(159, 120);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(534, 20);
-            this.textBox1.TabIndex = 2;
+            this.titleTextBox.Location = new System.Drawing.Point(159, 120);
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.Size = new System.Drawing.Size(534, 20);
+            this.titleTextBox.TabIndex = 2;
             // 
-            // label3
+            // descriptionLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 162);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Description";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Location = new System.Drawing.Point(47, 162);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
+            this.descriptionLabel.TabIndex = 3;
+            this.descriptionLabel.Text = "Description";
             // 
-            // textBox2
+            // descriptionTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(159, 162);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(534, 64);
-            this.textBox2.TabIndex = 4;
+            this.descriptionTextBox.Location = new System.Drawing.Point(159, 162);
+            this.descriptionTextBox.Multiline = true;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(534, 64);
+            this.descriptionTextBox.TabIndex = 4;
             // 
-            // label4
+            // statusLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(80, 83);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Status";
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(80, 83);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(56, 20);
+            this.statusLabel.TabIndex = 5;
+            this.statusLabel.Text = "Status";
             // 
-            // textBox3
+            // statusTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(159, 83);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(110, 20);
-            this.textBox3.TabIndex = 6;
+            this.statusTextBox.Location = new System.Drawing.Point(159, 83);
+            this.statusTextBox.Name = "statusTextBox";
+            this.statusTextBox.Size = new System.Drawing.Size(110, 20);
+            this.statusTextBox.TabIndex = 6;
             // 
-            // label5
+            // answerLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(69, 251);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Answer";
+            this.answerLabel.AutoSize = true;
+            this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answerLabel.Location = new System.Drawing.Point(69, 251);
+            this.answerLabel.Name = "answerLabel";
+            this.answerLabel.Size = new System.Drawing.Size(62, 20);
+            this.answerLabel.TabIndex = 7;
+            this.answerLabel.Text = "Answer";
             // 
-            // button1
+            // submitButton
             // 
-            this.button1.Location = new System.Drawing.Point(605, 490);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 42);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submitButton.Location = new System.Drawing.Point(605, 490);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(88, 42);
+            this.submitButton.TabIndex = 9;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // answerTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(159, 251);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(534, 64);
-            this.textBox4.TabIndex = 11;
+            this.answerTextBox.Location = new System.Drawing.Point(159, 251);
+            this.answerTextBox.Multiline = true;
+            this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.Size = new System.Drawing.Size(534, 64);
+            this.answerTextBox.TabIndex = 11;
             // 
-            // button2
+            // issueSubTicketButton
             // 
-            this.button2.Location = new System.Drawing.Point(159, 488);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 44);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "+ Issue Sub-ticket";
-            this.button2.UseVisualStyleBackColor = true;
+            this.issueSubTicketButton.Location = new System.Drawing.Point(159, 488);
+            this.issueSubTicketButton.Name = "issueSubTicketButton";
+            this.issueSubTicketButton.Size = new System.Drawing.Size(110, 44);
+            this.issueSubTicketButton.TabIndex = 12;
+            this.issueSubTicketButton.Text = "+ Issue Sub-ticket";
+            this.issueSubTicketButton.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // subTicketsList
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.subTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.Title,
             this.Status});
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
-            this.listView1.Location = new System.Drawing.Point(159, 347);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(534, 123);
-            this.listView1.TabIndex = 17;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.subTicketsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.subTicketsList.Location = new System.Drawing.Point(159, 347);
+            this.subTicketsList.Name = "subTicketsList";
+            this.subTicketsList.Size = new System.Drawing.Size(534, 123);
+            this.subTicketsList.TabIndex = 17;
+            this.subTicketsList.UseCompatibleStateImageBehavior = false;
             // 
-            // label6
+            // subTicketLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(43, 347);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 20);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Sub-Tickets";
+            this.subTicketLabel.AutoSize = true;
+            this.subTicketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subTicketLabel.Location = new System.Drawing.Point(43, 347);
+            this.subTicketLabel.Name = "subTicketLabel";
+            this.subTicketLabel.Size = new System.Drawing.Size(93, 20);
+            this.subTicketLabel.TabIndex = 18;
+            this.subTicketLabel.Text = "Sub-Tickets";
             // 
-            // button3
+            // refreshButton
             // 
-            this.button3.Location = new System.Drawing.Point(632, 73);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 30);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
+            this.refreshButton.Location = new System.Drawing.Point(632, 73);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(61, 30);
+            this.refreshButton.TabIndex = 19;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
             // 
             // showAssignedTicketITSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.refreshButton);
+            this.Controls.Add(this.subTicketLabel);
+            this.Controls.Add(this.subTicketsList);
+            this.Controls.Add(this.issueSubTicketButton);
+            this.Controls.Add(this.answerTextBox);
+            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.answerLabel);
+            this.Controls.Add(this.statusTextBox);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.descriptionTextBox);
+            this.Controls.Add(this.descriptionLabel);
+            this.Controls.Add(this.titleTextBox);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label1);
             this.Name = "showAssignedTicketITSolver";
             this.Text = "cx";
@@ -209,21 +208,21 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.TextBox titleTextBox;
+        private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.TextBox statusTextBox;
+        private System.Windows.Forms.Label answerLabel;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.TextBox answerTextBox;
+        private System.Windows.Forms.Button issueSubTicketButton;
+        private System.Windows.Forms.ListView subTicketsList;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label subTicketLabel;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

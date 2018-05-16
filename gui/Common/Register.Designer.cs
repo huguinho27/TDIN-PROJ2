@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.confirmPasswordLabel = new System.Windows.Forms.Label();
             this.emailBox = new System.Windows.Forms.TextBox();
-            this.password1Box = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.password2Box = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.departmentComboBox = new System.Windows.Forms.ComboBox();
+            this.departmentLabel = new System.Windows.Forms.Label();
+            this.submitButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // nameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(12, 99);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(51, 20);
+            this.nameLabel.TabIndex = 0;
+            this.nameLabel.Text = "Name";
+            this.nameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // usernameBox
             // 
@@ -60,35 +60,35 @@
             this.usernameBox.Size = new System.Drawing.Size(143, 20);
             this.usernameBox.TabIndex = 1;
             // 
-            // label2
+            // emailLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 137);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "E-mail";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailLabel.Location = new System.Drawing.Point(12, 137);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(53, 20);
+            this.emailLabel.TabIndex = 2;
+            this.emailLabel.Text = "E-mail";
             // 
-            // label3
+            // passwordLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(12, 177);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(78, 20);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
             // 
-            // label4
+            // confirmPasswordLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 211);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Confirm Password";
+            this.confirmPasswordLabel.AutoSize = true;
+            this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(12, 211);
+            this.confirmPasswordLabel.Name = "confirmPasswordLabel";
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(137, 20);
+            this.confirmPasswordLabel.TabIndex = 4;
+            this.confirmPasswordLabel.Text = "Confirm Password";
             // 
             // emailBox
             // 
@@ -97,12 +97,12 @@
             this.emailBox.Size = new System.Drawing.Size(143, 20);
             this.emailBox.TabIndex = 5;
             // 
-            // password1Box
+            // passwordBox
             // 
-            this.password1Box.Location = new System.Drawing.Point(152, 177);
-            this.password1Box.Name = "password1Box";
-            this.password1Box.Size = new System.Drawing.Size(143, 20);
-            this.password1Box.TabIndex = 6;
+            this.passwordBox.Location = new System.Drawing.Point(152, 177);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(143, 20);
+            this.passwordBox.TabIndex = 6;
             // 
             // password2Box
             // 
@@ -111,36 +111,36 @@
             this.password2Box.Size = new System.Drawing.Size(143, 20);
             this.password2Box.TabIndex = 7;
             // 
-            // comboBox1
+            // departmentComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.departmentComboBox.FormattingEnabled = true;
+            this.departmentComboBox.Items.AddRange(new object[] {
             "1 - I.T",
             "2 - Department"});
-            this.comboBox1.Location = new System.Drawing.Point(152, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(143, 21);
-            this.comboBox1.TabIndex = 8;
+            this.departmentComboBox.Location = new System.Drawing.Point(152, 66);
+            this.departmentComboBox.Name = "departmentComboBox";
+            this.departmentComboBox.Size = new System.Drawing.Size(143, 21);
+            this.departmentComboBox.TabIndex = 8;
             // 
-            // label5
+            // departmentLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 67);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Department";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.departmentLabel.AutoSize = true;
+            this.departmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentLabel.Location = new System.Drawing.Point(12, 67);
+            this.departmentLabel.Name = "departmentLabel";
+            this.departmentLabel.Size = new System.Drawing.Size(94, 20);
+            this.departmentLabel.TabIndex = 9;
+            this.departmentLabel.Text = "Department";
+            this.departmentLabel.Click += new System.EventHandler(this.label5_Click);
             // 
-            // button1
+            // submitButton
             // 
-            this.button1.Location = new System.Drawing.Point(220, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submitButton.Location = new System.Drawing.Point(220, 261);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 10;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -158,17 +158,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 297);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.departmentLabel);
+            this.Controls.Add(this.departmentComboBox);
             this.Controls.Add(this.password2Box);
-            this.Controls.Add(this.password1Box);
+            this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.emailBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.confirmPasswordLabel);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.usernameBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nameLabel);
             this.Name = "Register";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);
@@ -179,17 +179,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox usernameBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label confirmPasswordLabel;
         private System.Windows.Forms.TextBox emailBox;
-        private System.Windows.Forms.TextBox password1Box;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.TextBox password2Box;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox departmentComboBox;
+        private System.Windows.Forms.Label departmentLabel;
+        private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label label6;
     }
 }
