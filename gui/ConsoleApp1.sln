@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSolver", "ITSolver\ITSolv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseWorker", "EnterpriseWorker\EnterpriseWorker.csproj", "{F17B5864-3B20-42A7-B45B-C55C4B1B85E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{FEB58324-0242-463E-8F7D-28638B572E31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register", "Common\Register.csproj", "{FEB58324-0242-463E-8F7D-28638B572E31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{F76BE113-7E89-4791-99E9-7865C106A5E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FEB58324-0242-463E-8F7D-28638B572E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEB58324-0242-463E-8F7D-28638B572E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEB58324-0242-463E-8F7D-28638B572E31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76BE113-7E89-4791-99E9-7865C106A5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76BE113-7E89-4791-99E9-7865C106A5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76BE113-7E89-4791-99E9-7865C106A5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76BE113-7E89-4791-99E9-7865C106A5E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

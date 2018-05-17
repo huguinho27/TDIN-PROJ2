@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Common
+namespace Login
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Common
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Register());
+            Application.Run(new Form1());
         }
     }
 }

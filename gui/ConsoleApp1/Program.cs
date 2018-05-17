@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 public class WebRequestPost
 {
     const string endpoint = "http://localhost:3000";
+    const int timeout = 5000; //5 seconds timeout
 
     /**
      * This is only a test to show how it is done!
@@ -38,6 +39,7 @@ public class WebRequestPost
         WebRequest webRequest = WebRequest.Create(endpoint + APIMethod);
         webRequest.ContentType = "application/json";
         webRequest.Method = "POST";
+        webRequest.Timeout = timeout;
 
         //Serializaçao de Objeto para JSON
         JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -47,27 +49,46 @@ public class WebRequestPost
         byte[] requestData = Encoding.ASCII.GetBytes(request);
         webRequest.ContentLength = requestData.Length;
 
-        //Escrever contéudo
-        using (var stream = webRequest.GetRequestStream())
+        //Enviar e receber
+        try
         {
-            stream.Write(requestData, 0, requestData.Length);
+            //Escrever contéudo
+            using (var stream = webRequest.GetRequestStream())
+            {
+                stream.Write(requestData, 0, requestData.Length);
+            }
+
+            //Enviar
+            WebResponse webResponse = webRequest.GetResponse();
+
+            //Receber e fechar
+            string responseData;
+            using (Stream stream = webResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                responseData = reader.ReadToEnd();
+
+            }
+            webResponse.Close();
+
+            //Deserializaçao
+            return serializer.Deserialize<T>(responseData);
         }
-
-        //Enviar
-        WebResponse webResponse = webRequest.GetResponse();
-
-        //Receber e fechar
-        string responseData;
-        using (Stream stream = webResponse.GetResponseStream())
+        catch //Em caso do servidor nao ligado
         {
-            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            responseData = reader.ReadToEnd();
-            
-        }
-        webResponse.Close();
 
-        //Deserializaçao
-        return serializer.Deserialize<T>(responseData);
+            //So isto tb funcionava ....
+            //return serializer.Deserialize<T>({"'error':'1', 'message':'Connection to server failed!'"});
+
+            //criar resposta e serializar para JSON
+            Response responseException = new Response();
+            responseException.error = "1";
+            responseException.message = "Connection to server failed!";
+
+            //Deserializaçao para a classe pretendida
+            string responseExceptionData = serializer.Serialize(responseException);
+            return serializer.Deserialize<T>(responseExceptionData);
+        }
     }
 }
 
