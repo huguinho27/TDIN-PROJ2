@@ -34,6 +34,7 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // emailLabel
@@ -83,18 +84,30 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(112, 237);
+            this.submitButton.Location = new System.Drawing.Point(184, 232);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(98, 41);
             this.submitButton.TabIndex = 5;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // registerButton
+            // 
+            this.registerButton.Location = new System.Drawing.Point(28, 232);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(98, 41);
+            this.registerButton.TabIndex = 6;
+            this.registerButton.Text = "Register";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(321, 311);
+            this.ClientSize = new System.Drawing.Size(321, 307);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.emailTextBox);
@@ -116,5 +129,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button registerButton;
     }
 }

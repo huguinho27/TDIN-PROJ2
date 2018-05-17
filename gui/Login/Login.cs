@@ -21,5 +21,40 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            Common.Register reg = new Common.Register();
+            reg.Show();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            RequestLogin request = new RequestLogin();
+            request.email = emailTextBox.Text;
+            request.password = passwordTextBox.Text;
+
+            //Making the register request
+            ResponseLogin response = (ResponseLogin)WebRequestPost.makeRequest<ResponseLogin>("/auth/login", request);
+
+            if (response.error.Equals("0"))
+                MessageBox.Show(
+                    "User registered with id: " + response.insertedId,
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            else if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+        }
     }
 }
