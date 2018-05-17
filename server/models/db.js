@@ -154,10 +154,12 @@ module.exports =
     assignSolverToTroubleTicket: (data, callback) =>
     {
         _db.collection(troubleTicketsCollection).updateOne(
-            {'_id': new mongo.ObjectId(data.id)},
+            {'_id': new mongo.ObjectId(data.id), 'state':'unassigned'},
             {$set: {'solverId': data.solverId, 'solverName':data.solverName, 'state':'assigned'}},
             (err, res) =>
             {
+                if(res.modifiedCount < 1)
+                    callback('Trouble ticket already assign', null);
                 if(err === null)
                     callback(null, res);
                 else
@@ -169,6 +171,8 @@ module.exports =
     {
         _db.collection(secondaryTicketsCollection).insertOne(
             {
+                'email':data.email,
+                'name':data.name,
                 'title':data.title,
                 'description':data.description,
                 'troubleTicketId': data.troubleTicketId,
@@ -194,6 +198,14 @@ module.exports =
                     );
             }
         );
+    },
+
+    getSecondaryQuestionById: (data, callback) =>
+    {
+        _db.collection(secondaryTicketsCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
+        {
+            callback(err, res);
+        });
     },
 
     solveSecondaryQuestion: (data, callback) =>
@@ -222,7 +234,7 @@ module.exports =
                {
                    docs.forEach((obj) =>
                    {
-                       if(obj.status === 'waiting')
+                       if(obj.state === 'waiting')
                            callback('Some secondary tickets are not yet solved', null);
                    });
 
