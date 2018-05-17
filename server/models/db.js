@@ -56,6 +56,22 @@ module.exports =
         });
     },
 
+    getUserById : (data, callback) =>
+    {
+        const id = data.id;
+
+        if(id === undefined)
+            callback('Please Provide ID', null);
+
+        _db.collection(usersCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
+        {
+            if(err)
+                callback('Failed to retrieve user from database', null);
+            else
+                callback(null, res);
+        });
+    },
+
     checkUserLogin: (data, callback) =>
     {
         const email = data.email;
@@ -68,7 +84,7 @@ module.exports =
                 bcrypt.compare(password, res.password, (err1, res1) =>
                 {
                     if(err1) callback('Password does not match', null);
-                    else callback(null, {'email': email, 'name':res.name, 'department': res.department, 'id':res._id});
+                    else callback(null, {'email': email, 'name':res.name, 'department': res.department, '_id':res._id});
                 });
         });
     },
@@ -97,6 +113,23 @@ module.exports =
             callback(err, docs);
         });
     },
+
+    getTroubleTicketById: (data, callback) =>
+    {
+        _db.collection(troubleTicketsCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
+        {
+            callback(err, res);
+        });
+    },
+
+    getSecondaryQuestionByTroubleTicketId: (data, callback) =>
+    {
+        _db.collection(secondaryTicketsCollection).find({'troubleTicket_id':data.id}).toArray((err, docs) =>
+        {
+            callback(err, docs);
+        });
+    },
+
 
     createTroubleTicket: (data, callback) =>
     {
