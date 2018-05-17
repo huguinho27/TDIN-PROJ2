@@ -60,7 +60,7 @@
             this.issueTicketButton.TabIndex = 3;
             this.issueTicketButton.Text = "+ Issue a Ticket";
             this.issueTicketButton.UseVisualStyleBackColor = true;
-            this.issueTicketButton.Click += new System.EventHandler(this.button2_Click);
+            this.issueTicketButton.Click += new System.EventHandler(this.issueTicketButton_Click);
             // 
             // refreshButton
             // 
@@ -70,7 +70,6 @@
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // ticketsList
             // 
@@ -88,31 +87,32 @@
             // 
             // IDLabel
             // 
-            this.IDLabel.AutoSize = true;
             this.IDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDLabel.Location = new System.Drawing.Point(72, 85);
+            this.IDLabel.Location = new System.Drawing.Point(428, 29);
             this.IDLabel.Name = "IDLabel";
-            this.IDLabel.Size = new System.Drawing.Size(26, 20);
+            this.IDLabel.Size = new System.Drawing.Size(263, 20);
             this.IDLabel.TabIndex = 21;
             this.IDLabel.Text = "ID";
+            this.IDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.IDLabel.Click += new System.EventHandler(this.IDLabel_Click);
             // 
             // departmentLabel
             // 
             this.departmentLabel.AutoSize = true;
-            this.departmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentLabel.Location = new System.Drawing.Point(72, 55);
+            this.departmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentLabel.Location = new System.Drawing.Point(72, 20);
             this.departmentLabel.Name = "departmentLabel";
-            this.departmentLabel.Size = new System.Drawing.Size(94, 20);
+            this.departmentLabel.Size = new System.Drawing.Size(138, 29);
             this.departmentLabel.TabIndex = 20;
             this.departmentLabel.Text = "Department";
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(71, 9);
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(73, 66);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(78, 29);
+            this.nameLabel.Size = new System.Drawing.Size(51, 20);
             this.nameLabel.TabIndex = 19;
             this.nameLabel.Text = "Name";
             // 
@@ -130,6 +130,8 @@
             this.Controls.Add(this.ticketsLabel);
             this.Name = "WorkerGUI";
             this.Text = "WorkerGUI";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorkerGUI_FormClosed);
+            this.Load += new System.EventHandler(this.WorkerGUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
