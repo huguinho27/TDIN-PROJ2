@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web.Script.Serialization;
+using System.Collections.Generic;
 
 public class WebRequestPost
 {
@@ -92,6 +93,8 @@ public class WebRequestPost
     }
 }
 
+
+
 /**
  * REQUEST CLASSES
  */
@@ -107,6 +110,12 @@ public class RequestRegister : Request
     public string password { get; set; }
     public string confirmPassword { get; set; }
 }
+public class RequestLogin : Request
+{
+    public string email { get; set; }
+    public string password { get; set; }
+}
+
 
 
 /**
@@ -124,6 +133,46 @@ public class Response
 public class ResponseRegister : Response
 {
     public string insertedId { get; set; }
+}
+
+public class ResponseLogin : Response
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string department { get; set; }
+    public string id { get; set; }
+    public List<TroubleTicket> solverTickets { get; set; }
+    public List<TroubleTicket> unassignedTickets { get; set; }
+    public List<TroubleTicket> userTickets { get; set; }
+}
+
+
+/**
+ * Custom Classes 
+ */
+
+public class TroubleTicket
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string title { get; set; }
+    public string description { get; set; }
+    public string _id { get; set; }
+    public string date { get; set; }
+    public string state { get; set; }
+    public string solverId { get; set; }
+    public string solverName { get; set; }
+    public string answer { get; set; }
+}
+
+public class SecondaryTroubleTicket
+{
+    public string title { get; set; }
+    public string description { get; set; }
+    public string _id { get; set; }
+    public string troubleTicket_id { get; set; }
+    public string state { get; set; }
+    public string answer { get; set; }
 }
 
 
