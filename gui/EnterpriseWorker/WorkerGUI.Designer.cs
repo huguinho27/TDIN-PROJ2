@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.ticketsLabel = new System.Windows.Forms.Label();
             this.issueTicketButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.ticketsList = new System.Windows.Forms.ListView();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IDLabel = new System.Windows.Forms.Label();
             this.departmentLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ticketsList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // ticketsLabel
@@ -70,20 +69,7 @@
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
-            // 
-            // ticketsList
-            // 
-            this.ticketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.Title,
-            this.Status});
-            this.ticketsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.ticketsList.Location = new System.Drawing.Point(76, 147);
-            this.ticketsList.Name = "ticketsList";
-            this.ticketsList.Size = new System.Drawing.Size(615, 171);
-            this.ticketsList.TabIndex = 18;
-            this.ticketsList.UseCompatibleStateImageBehavior = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // IDLabel
             // 
@@ -116,6 +102,35 @@
             this.nameLabel.TabIndex = 19;
             this.nameLabel.Text = "Name";
             // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 200;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            this.Title.Width = 200;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 200;
+            // 
+            // ticketsList
+            // 
+            this.ticketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Title,
+            this.Status});
+            this.ticketsList.Location = new System.Drawing.Point(76, 147);
+            this.ticketsList.Name = "ticketsList";
+            this.ticketsList.Size = new System.Drawing.Size(615, 171);
+            this.ticketsList.TabIndex = 18;
+            this.ticketsList.UseCompatibleStateImageBehavior = false;
+            this.ticketsList.View = System.Windows.Forms.View.Details;
+            this.ticketsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ticketsList_MouseDoubleClick);
+            // 
             // WorkerGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,12 +157,12 @@
         private System.Windows.Forms.Label ticketsLabel;
         private System.Windows.Forms.Button issueTicketButton;
         private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.ListView ticketsList;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Title;
-        private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.Label departmentLabel;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ListView ticketsList;
     }
 }

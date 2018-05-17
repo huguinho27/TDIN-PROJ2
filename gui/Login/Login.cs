@@ -54,25 +54,29 @@ namespace WindowsFormsApp1
                 if (response.department.Equals("1"))
                 {
                     GUIiTSolver itsolver = new GUIiTSolver();
+                    itsolver.name = response.name;
+                    itsolver.email = response.email;
+                    itsolver.id = response.id;
                     itsolver.changeNameLabelText(response.name);
                     itsolver.changeDepartmentLabelText("I.T - Solver");
                     itsolver.changeIDLabelText(response.id);
                     foreach (TroubleTicket ticket in response.solverTickets)
-                        itsolver.addAssignedTicket(ticket._id, ticket.title, ticket.state);
+                        itsolver.addAssignedTicket(ticket.id, ticket.title, ticket.state);
                     foreach (TroubleTicket ticket in response.unassignedTickets)
-                        itsolver.addUnassignedTicket(ticket._id, ticket.title, ticket.state);
+                        itsolver.addUnassignedTicket(ticket.id, ticket.title, ticket.state);
                     itsolver.Show();
                 }
                 else if (response.department.Equals("2"))
                 {
                     WorkerGUI workerGui = new WorkerGUI();
                     workerGui.name = response.name;
+                    workerGui.id = response.id;
                     workerGui.email = response.email;
                     workerGui.changeNameLabel(response.name);
                     workerGui.changeDepartmentLabel("Enterprise Worker");
                     workerGui.changeIDLabel(response.id);
                     foreach (TroubleTicket ticket in response.userTickets)
-                        workerGui.addTickets(ticket._id, ticket.title, ticket.state);
+                        workerGui.addTickets(ticket.id, ticket.title, ticket.state);
                     workerGui.Show();
                 }
             }

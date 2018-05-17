@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("");
             this.refreshButton = new System.Windows.Forms.Button();
             this.assignedTicketsLabel = new System.Windows.Forms.Label();
             this.unassignedTicketsLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.departmentLabel = new System.Windows.Forms.Label();
+            this.IDLabel = new System.Windows.Forms.Label();
             this.assignedTicketsList = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,7 +42,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IDLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // refreshButton
@@ -97,34 +95,6 @@
             this.departmentLabel.TabIndex = 14;
             this.departmentLabel.Text = "Department";
             // 
-            // assignedTicketsList
-            // 
-            this.assignedTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.Title,
-            this.Status});
-            this.assignedTicketsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem21});
-            this.assignedTicketsList.Location = new System.Drawing.Point(60, 163);
-            this.assignedTicketsList.Name = "assignedTicketsList";
-            this.assignedTicketsList.Size = new System.Drawing.Size(303, 225);
-            this.assignedTicketsList.TabIndex = 16;
-            this.assignedTicketsList.UseCompatibleStateImageBehavior = false;
-            // 
-            // unassignedTicketsList
-            // 
-            this.unassignedTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.unassignedTicketsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem22});
-            this.unassignedTicketsList.Location = new System.Drawing.Point(400, 163);
-            this.unassignedTicketsList.Name = "unassignedTicketsList";
-            this.unassignedTicketsList.Size = new System.Drawing.Size(328, 225);
-            this.unassignedTicketsList.TabIndex = 17;
-            this.unassignedTicketsList.UseCompatibleStateImageBehavior = false;
-            // 
             // IDLabel
             // 
             this.IDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,14 +106,71 @@
             this.IDLabel.Text = "ID";
             this.IDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // assignedTicketsList
+            // 
+            this.assignedTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Title,
+            this.Status});
+            this.assignedTicketsList.Location = new System.Drawing.Point(60, 163);
+            this.assignedTicketsList.Name = "assignedTicketsList";
+            this.assignedTicketsList.Size = new System.Drawing.Size(328, 225);
+            this.assignedTicketsList.TabIndex = 23;
+            this.assignedTicketsList.UseCompatibleStateImageBehavior = false;
+            this.assignedTicketsList.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 107;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            this.Title.Width = 107;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 107;
+            // 
+            // unassignedTicketsList
+            // 
+            this.unassignedTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.unassignedTicketsList.Location = new System.Drawing.Point(400, 163);
+            this.unassignedTicketsList.Name = "unassignedTicketsList";
+            this.unassignedTicketsList.Size = new System.Drawing.Size(328, 225);
+            this.unassignedTicketsList.TabIndex = 24;
+            this.unassignedTicketsList.UseCompatibleStateImageBehavior = false;
+            this.unassignedTicketsList.View = System.Windows.Forms.View.Details;
+            this.unassignedTicketsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.unassignedTicketsList_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 107;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Title";
+            this.columnHeader2.Width = 107;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Status";
+            this.columnHeader3.Width = 107;
+            // 
             // GUIiTSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 424);
-            this.Controls.Add(this.IDLabel);
             this.Controls.Add(this.unassignedTicketsList);
             this.Controls.Add(this.assignedTicketsList);
+            this.Controls.Add(this.IDLabel);
             this.Controls.Add(this.departmentLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.unassignedTicketsLabel);
@@ -152,6 +179,7 @@
             this.Name = "GUIiTSolver";
             this.Text = "GUIiTSolver";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GUIiTSolver_FormClosed);
+            this.Load += new System.EventHandler(this.GUIiTSolver_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +192,7 @@
         private System.Windows.Forms.Label unassignedTicketsLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label departmentLabel;
+        private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.ListView assignedTicketsList;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Title;
@@ -172,6 +201,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Label IDLabel;
     }
 }

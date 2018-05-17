@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.refreshbutton = new System.Windows.Forms.Button();
             this.answerTextBox = new System.Windows.Forms.TextBox();
             this.answerLabel = new System.Windows.Forms.Label();
             this.statusTextBox = new System.Windows.Forms.TextBox();
@@ -40,20 +39,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // refreshbutton
-            // 
-            this.refreshbutton.Location = new System.Drawing.Point(630, 81);
-            this.refreshbutton.Name = "refreshbutton";
-            this.refreshbutton.Size = new System.Drawing.Size(69, 31);
-            this.refreshbutton.TabIndex = 41;
-            this.refreshbutton.Text = "Refresh";
-            this.refreshbutton.UseVisualStyleBackColor = true;
-            // 
             // answerTextBox
             // 
             this.answerTextBox.Location = new System.Drawing.Point(165, 260);
             this.answerTextBox.Multiline = true;
             this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.ReadOnly = true;
             this.answerTextBox.Size = new System.Drawing.Size(534, 64);
             this.answerTextBox.TabIndex = 37;
             // 
@@ -71,6 +62,7 @@
             // 
             this.statusTextBox.Location = new System.Drawing.Point(165, 92);
             this.statusTextBox.Name = "statusTextBox";
+            this.statusTextBox.ReadOnly = true;
             this.statusTextBox.Size = new System.Drawing.Size(110, 20);
             this.statusTextBox.TabIndex = 35;
             // 
@@ -89,6 +81,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(165, 171);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ReadOnly = true;
             this.descriptionTextBox.Size = new System.Drawing.Size(534, 64);
             this.descriptionTextBox.TabIndex = 33;
             // 
@@ -106,6 +99,7 @@
             // 
             this.titleTextBox.Location = new System.Drawing.Point(165, 129);
             this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.ReadOnly = true;
             this.titleTextBox.Size = new System.Drawing.Size(534, 20);
             this.titleTextBox.TabIndex = 31;
             // 
@@ -134,7 +128,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 372);
-            this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.statusTextBox);
@@ -152,8 +145,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button refreshbutton;
         private System.Windows.Forms.TextBox answerTextBox;
         private System.Windows.Forms.Label answerLabel;
         private System.Windows.Forms.TextBox statusTextBox;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.label1 = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.TextBox();
@@ -40,12 +39,12 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.answerTextBox = new System.Windows.Forms.TextBox();
             this.issueSubTicketButton = new System.Windows.Forms.Button();
+            this.subTicketLabel = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.subTicketsList = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.subTicketLabel = new System.Windows.Forms.Label();
-            this.refreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -146,20 +145,6 @@
             this.issueSubTicketButton.Text = "+ Issue Sub-ticket";
             this.issueSubTicketButton.UseVisualStyleBackColor = true;
             // 
-            // subTicketsList
-            // 
-            this.subTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.Title,
-            this.Status});
-            this.subTicketsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.subTicketsList.Location = new System.Drawing.Point(159, 347);
-            this.subTicketsList.Name = "subTicketsList";
-            this.subTicketsList.Size = new System.Drawing.Size(534, 123);
-            this.subTicketsList.TabIndex = 17;
-            this.subTicketsList.UseCompatibleStateImageBehavior = false;
-            // 
             // subTicketLabel
             // 
             this.subTicketLabel.AutoSize = true;
@@ -179,14 +164,42 @@
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
             // 
+            // subTicketsList
+            // 
+            this.subTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Title,
+            this.Status});
+            this.subTicketsList.Location = new System.Drawing.Point(159, 347);
+            this.subTicketsList.Name = "subTicketsList";
+            this.subTicketsList.Size = new System.Drawing.Size(534, 110);
+            this.subTicketsList.TabIndex = 24;
+            this.subTicketsList.UseCompatibleStateImageBehavior = false;
+            this.subTicketsList.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 176;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            this.Title.Width = 176;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 176;
+            // 
             // showAssignedTicketITSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
+            this.Controls.Add(this.subTicketsList);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.subTicketLabel);
-            this.Controls.Add(this.subTicketsList);
             this.Controls.Add(this.issueSubTicketButton);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.submitButton);
@@ -218,11 +231,11 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.TextBox answerTextBox;
         private System.Windows.Forms.Button issueSubTicketButton;
+        private System.Windows.Forms.Label subTicketLabel;
+        private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.ListView subTicketsList;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Label subTicketLabel;
-        private System.Windows.Forms.Button refreshButton;
     }
 }

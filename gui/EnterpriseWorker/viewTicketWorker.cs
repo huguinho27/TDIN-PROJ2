@@ -16,5 +16,25 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        public void changeStatusText(string newText)
+        {
+            this.statusTextBox.Text = newText;
+        }
+
+        public void changeTitleText(string newText)
+        {
+            this.titleTextBox.Text = newText;
+        }
+
+        public void changeDescriptionText(string newText)
+        {
+            this.descriptionTextBox.Text = newText;
+        }
+
+        public void changeAnswerText(string newText)
+        {
+            this.answerTextBox.Text = newText;
+        }
     }
 }

@@ -23,11 +23,14 @@ namespace EnterpriseWorker
         private void submitButton_Click(object sender, EventArgs e)
         {
             if (titleTextBox.Text == "" || descriptionTextBox.Text == "")
+            {
                 MessageBox.Show(
                     "Title or description are empty: ",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                return;
+            }
 
             RequestCreateTicket request = new RequestCreateTicket();
             request.name = this.name;
@@ -39,7 +42,7 @@ namespace EnterpriseWorker
 
             if (response.error.Equals("0"))
                 MessageBox.Show(
-                    "User registered with id: " + response.insertedId,
+                    "Successfully created trouble ticket: " + response.insertedId,
                     "Success",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -49,6 +52,8 @@ namespace EnterpriseWorker
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            this.Hide();
+
         }
     }
 }

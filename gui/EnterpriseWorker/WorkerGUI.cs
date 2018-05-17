@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
     {
         public string name { get; set; }
         public string email { get; set; }
+        public string id { get; set; }
 
         public WorkerGUI()
         {
@@ -39,8 +40,7 @@ namespace WindowsFormsApp1
         public void addTickets(string ID, string title, string status)
         {
             string[] row = { ID, title, status };
-            var listItem = new ListViewItem(row);
-            ticketsList.Items.Add(listItem);
+            ticketsList.Items.Add(new ListViewItem(row));
         }
 
         private void issueTicketButton_Click(object sender, EventArgs e)
@@ -48,7 +48,9 @@ namespace WindowsFormsApp1
             createTicketWorker ticket = new createTicketWorker();
             ticket.name = this.name;
             ticket.email = this.email;
-            ticket.Show();
+            ticket.ShowDialog();
+
+            this.refreshButton_Click(sender, e);
         }
 
         private void WorkerGUI_Load(object sender, EventArgs e)
@@ -63,6 +65,62 @@ namespace WindowsFormsApp1
 
         private void IDLabel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ticketsList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            RequestTroubleTicket request = new RequestTroubleTicket();
+            request.id = this.ticketsList.SelectedItems[0].SubItems[0].Text;
+
+            //Making the register request
+            ResponseTroubleTicket response = (ResponseTroubleTicket)WebRequestPost.makeRequest<ResponseTroubleTicket>("/troubletickets/get", request);
+
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+
+            viewTicketWorker window = new viewTicketWorker();
+            window.changeStatusText(response.state);
+            window.changeTitleText(response.title);
+            window.changeDescriptionText(response.description);
+            window.changeAnswerText(response.answer);
+            window.Show();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            RequestUser request = new RequestUser();
+            request.id = this.id;
+
+            //Making the register request
+            ResponseUser response = (ResponseUser)WebRequestPost.makeRequest<ResponseUser>("/users/get", request);
+
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+
+            ticketsList.Items.Clear();
+            foreach (TroubleTicket ticket in response.userTickets)
+                this.addTickets(ticket.id, ticket.title, ticket.state);
 
         }
     }

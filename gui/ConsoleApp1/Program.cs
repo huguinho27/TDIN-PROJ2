@@ -124,6 +124,17 @@ public class RequestCreateTicket : Request
     public string description { get; set; }
 }
 
+public class RequestTroubleTicket : Request
+{
+    public string id { get; set; }
+}
+
+public class RequestUser : Request
+{
+    public string id { get; set; }
+}
+
+
 
 /**
  * RESPONSE CLASSES
@@ -153,9 +164,34 @@ public class ResponseLogin : Response
     public List<TroubleTicket> userTickets { get; set; }
 }
 
+public class ResponseUser : Response
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string department { get; set; }
+    public string id { get; set; }
+    public List<TroubleTicket> solverTickets { get; set; }
+    public List<TroubleTicket> unassignedTickets { get; set; }
+    public List<TroubleTicket> userTickets { get; set; }
+}
+
 public class ResponseCreateTicket : Response
 {
     public string insertedId { get; set; }
+}
+
+public class ResponseTroubleTicket : Response
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string title { get; set; }
+    public string description { get; set; }
+    public string id { get; set; }
+    public string date { get; set; }
+    public string state { get; set; }
+    public string solverId { get; set; }
+    public string solverName { get; set; }
+    public string answer { get; set; }
 }
 
 
@@ -169,7 +205,7 @@ public class TroubleTicket
     public string name { get; set; }
     public string title { get; set; }
     public string description { get; set; }
-    public string _id { get; set; }
+    public string id { get; set; }
     public string date { get; set; }
     public string state { get; set; }
     public string solverId { get; set; }
@@ -181,7 +217,7 @@ public class SecondaryTroubleTicket
 {
     public string title { get; set; }
     public string description { get; set; }
-    public string _id { get; set; }
+    public string id { get; set; }
     public string troubleTicket_id { get; set; }
     public string state { get; set; }
     public string answer { get; set; }
