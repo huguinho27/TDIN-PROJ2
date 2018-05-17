@@ -1,0 +1,37 @@
+API METHODS:
+
+- /auth/login
+	Receives: email, password
+	Returns : error, message, email, name, department, id, userTickets array, solverTickets array, unassignedTickets array
+	
+- /auth/register
+	Receives: email, password, department, password, confirmPassword
+	Returns : error, message, insertedId
+	
+- /users/get
+	Receives: id,
+	Returns : error, message, email, name, department, id, userTickets array, solverTickets array, unassignedTickets array
+	
+- /troubletickets/add
+	Receives: email, name, title, description
+	Returns : error, message, insertedId
+	
+- /troubletickets/get
+	Receives: id
+	Returns : error, message, email, name, title, description, id, date, state, solverId, solverName, answer
+	
+- /troubletickets/assign
+	Receives: id, solverId, solverName
+	Returns : error, message
+	
+- /troubletickets/getsecondaryquestions
+	Receives: id
+	Returns : error, message, secondaryQuestions array
+	
+- /troubletickets/solve
+	Receives: id, answer
+	Returns : error, message
+	
+- /secondaryquestions/add
+	Receives: email, name, title, description, troubleTicketId
+	Returns : error, message, insertedId

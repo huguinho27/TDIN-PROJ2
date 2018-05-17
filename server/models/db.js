@@ -124,7 +124,7 @@ module.exports =
 
     getSecondaryQuestionByTroubleTicketId: (data, callback) =>
     {
-        _db.collection(secondaryTicketsCollection).find({'troubleTicket_id':data.id}).toArray((err, docs) =>
+        _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.id}).toArray((err, docs) =>
         {
             callback(err, docs);
         });
@@ -176,6 +176,7 @@ module.exports =
                 'title':data.title,
                 'description':data.description,
                 'troubleTicketId': data.troubleTicketId,
+                'date': (new Date).getTime(),
                 'state':'waiting'
             },
             (err, res) =>
