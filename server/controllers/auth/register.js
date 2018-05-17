@@ -11,11 +11,12 @@ module.exports =
         const password = req.body.password;
         const confirmPassword = req.body.confirmPassword;
 
-        console.log(email, name, department, password, confirmPassword);
-        console.log(req.body);
 
         if(email === undefined || name === undefined || department === undefined || password === undefined || confirmPassword === undefined) {
             res.send({'error': 1, 'message': 'Missing parameters' });
+        }
+        else if(email === '' || name === '' || password === '') {
+            res.send({'error': 1, 'message': 'Email, name and password cant be empty' });
         }
         else if(password !== confirmPassword) {
             res.send({'error': 1, 'message': 'Passwords do not match' });

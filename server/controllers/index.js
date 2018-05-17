@@ -1,16 +1,12 @@
 const routes = require('express').Router();
 const auth = require('./auth');
-
-// TEST ONLY
-routes.get('/', (req, res, next) =>
-{
-    res.send("get working");
-});
-routes.post('/', (req, res, next) =>
-{
-    res.send("post working");
-});
+const secondaryquestions = require('./secondaryquestions');
+const troubletickets = require('./troubletickets');
+const users = require('./users');
 
 routes.use('/auth', auth);
+routes.use('/secondaryquestions', secondaryquestions);
+routes.use('/troubletickets', troubletickets);
+routes.use('/users',users);
 
 module.exports = routes;
