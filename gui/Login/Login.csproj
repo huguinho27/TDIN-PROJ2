@@ -87,6 +87,18 @@
       <Project>{071dc055-78e9-4a54-86f1-8e9e388e990e}</Project>
       <Name>Communication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EnterpriseWorker\EnterpriseWorker.csproj">
+      <Project>{f17b5864-3b20-42a7-b45b-c55c4b1b85e2}</Project>
+      <Name>EnterpriseWorker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITSolver\ITSolver.csproj">
+      <Project>{0e267f73-5f79-4db0-ae21-6853982e1fa6}</Project>
+      <Name>ITSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\DepartmentSolver.csproj">
+      <Project>{6b7ac537-6454-4252-a8bd-494242522dad}</Project>
+      <Name>DepartmentSolver</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -116,6 +116,13 @@ public class RequestLogin : Request
     public string password { get; set; }
 }
 
+public class RequestCreateTicket : Request
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string title { get; set; }
+    public string description { get; set; }
+}
 
 
 /**
@@ -144,6 +151,11 @@ public class ResponseLogin : Response
     public List<TroubleTicket> solverTickets { get; set; }
     public List<TroubleTicket> unassignedTickets { get; set; }
     public List<TroubleTicket> userTickets { get; set; }
+}
+
+public class ResponseCreateTicket : Response
+{
+    public string insertedId { get; set; }
 }
 
 

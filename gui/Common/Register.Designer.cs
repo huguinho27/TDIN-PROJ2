@@ -117,12 +117,12 @@
             this.departmentComboBox.FormattingEnabled = true;
             this.departmentComboBox.Items.AddRange(new object[] {
             "1 - I.T",
-            "2 - Department"});
+            "2 - Enterprise Worker"});
             this.departmentComboBox.Location = new System.Drawing.Point(152, 66);
             this.departmentComboBox.Name = "departmentComboBox";
             this.departmentComboBox.Size = new System.Drawing.Size(143, 21);
             this.departmentComboBox.TabIndex = 8;
-            this.departmentComboBox.SelectedIndex = 0;
+            this.departmentComboBox.Text = "1 - I.T";
             // 
             // departmentLabel
             // 
