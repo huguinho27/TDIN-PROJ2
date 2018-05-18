@@ -3,35 +3,44 @@ API METHODS:
 - /auth/login
 	Receives: email, password
 	Returns : error, message, email, name, department, id, userTickets array, solverTickets array, unassignedTickets array
+	Description: Checks if user exists and is registered, returns all info related to the user, and even trouble Tickets lists according to the type of user
 	
 - /auth/register
 	Receives: email, password, department, password, confirmPassword
 	Returns : error, message, insertedId
+	Description: Registers a user with certain given paramethers
 	
 - /users/get
 	Receives: id,
 	Returns : error, message, email, name, department, id, userTickets array, solverTickets array, unassignedTickets array
+	Description: Returns all info related to a user with the given id. Also returns trouble Tickets lists according to the type of user.
 	
 - /troubletickets/add
 	Receives: email, name, title, description
 	Returns : error, message, insertedId
+	Description: Creates a new trouble ticket from a user for the IT Solvers to solve.
 	
 - /troubletickets/get
 	Receives: id
 	Returns : error, message, email, name, title, description, id, date, state, solverId, solverName, answer
+	Description: Gets all the info of a trouble Ticket, DOES NOT RETURN ASSOCIATED SECONDARY QUESTIONS.
 	
 - /troubletickets/assign
 	Receives: id, solverId, solverName
 	Returns : error, message
+	Description: Assigns a trouble ticket to a given specific user/solver
 	
 - /troubletickets/getsecondaryquestions
 	Receives: id
 	Returns : error, message, secondaryQuestions array
+	Description: Returns a list of all the secondary questions associated to the given trouble ticket id.
 	
 - /troubletickets/solve
 	Receives: id, answer
 	Returns : error, message
+	Description: Solves a trouble ticket.
 	
 - /secondaryquestions/add
 	Receives: email, name, title, description, troubleTicketId
 	Returns : error, message, insertedId
+	Description: Creates a secondary question to a trouble ticket.

@@ -1,0 +1,51 @@
+===============
+=IT Solver Gui=
+===============
+- Refresh Button
+	/users/get
+	
+- Click my assigned tickets (troubleTicketSolverView)
+	/troubletickets/get
+	/troubletickets/getseondaryquestions
+	
+	refresh_button_click() depois de fechar pois o estado pode ter mudado
+	
+- Click unassigned tickets
+	/troubletickets/assign 
+	
+		if(assign succeded) //pode estar dessincronizado e outra pessoa pode ja o estar a resolver
+			refresh_button_click()
+			open troubleTicketSolverView //simular um 'Click my assigned tickets'
+		else
+			show message
+			do nothing.
+			
+	
+	
+=========================
+=troubleTicketSolverView=
+=========================	
+- Refresh Button
+	/troubletickets/get
+	/troubletickets/getseondaryquestions
+
+- Click Solve
+	/troubletickets/solve
+	
+- Click Secondary Ticket (secondaryTicketView)
+	/secondaryquestions/get
+
+- Click create Secondary Ticket (createSecondaryTicketView)
+	refresh_button_click() depois de fechar o createSecondaryTicketView pois o estado pode ter mudado
+
+
+===========================
+=createSecondaryTicketView=
+===========================
+- Click Create
+	/secondaryquestions/add
+
+=====================
+=secondaryTicketView=
+=====================
+Não há nada para fazer neste, nem refresh será necessário
