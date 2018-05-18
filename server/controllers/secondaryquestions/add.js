@@ -17,7 +17,7 @@ module.exports =
                 res.send({'error': 1, 'message': 'Cant have empty parameters' });
             }
 
-            mongo.createSecondaryQuestion(req.body, (err, result) =>
+            else mongo.createSecondaryQuestion(req.body, (err, result) =>
             {
                 if(err !== null)
                     res.send({'error': 1, 'message': err });

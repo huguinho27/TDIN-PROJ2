@@ -158,8 +158,8 @@ module.exports =
             {$set: {'solverId': data.solverId, 'solverName':data.solverName, 'state':'assigned'}},
             (err, res) =>
             {
-                if(res.modifiedCount < 1)
-                    callback('Trouble ticket already assign', null);
+                if(res !== null && res.matchedCount < 1)
+                    callback('Trouble ticket already assigned', null);
                 else if(err === null)
                     callback(null, res);
                 else
@@ -185,12 +185,12 @@ module.exports =
                     callback('Failed to create Secondary Question', null);
                 else
                     _db.collection(troubleTicketsCollection).updateOne(
-                        {'_id': new mongo.ObjectId(data.troubleTicketId),'state': {$not: 'solved'}},
+                        {'_id': new mongo.ObjectId(data.troubleTicketId),'state': {$ne: 'solved'}},
                         {$set: {'state':'waiting'}},
                         (err1, res1) =>
                         {
-                            console.log(err1, res1);
-                            if(res1.modifiedCount < 1)
+
+                            if(res1 !== null && res1.matchedCount < 1)
                                 callback('Failed to update trouble to waiting, probably is solved already', null);
                             else if(err1 === null)
                                 callback(null, res);

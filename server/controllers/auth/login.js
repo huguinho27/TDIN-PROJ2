@@ -9,8 +9,7 @@ module.exports =
 
         if(email === undefined || email === '' || password === undefined || password === '')
             res.send({'error': 1, 'message': 'Invalid email or password' });
-
-        mongo.checkUserLogin(req.body, (err1, res1) =>
+        else mongo.checkUserLogin(req.body, (err1, res1) =>
         {
             if(err1 !== null)
                 res.send({'error':1, 'message': err1});

@@ -11,7 +11,7 @@ module.exports =
         if(id === '' || solverId === '' || solverName === '' || id === undefined || solverId === undefined || solverName === undefined)
             res.send({'error':1, 'message':'Invalid trouble ticket id, solver id or solver name'});
 
-        mongo.assignSolverToTroubleTicket(req.body, (err, result) =>
+        else mongo.assignSolverToTroubleTicket(req.body, (err, result) =>
         {
             if(err !== null)
                 res.send({'error':1, 'message':err});

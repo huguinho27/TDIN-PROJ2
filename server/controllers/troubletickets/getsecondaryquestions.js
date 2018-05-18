@@ -9,7 +9,7 @@ module.exports =
         if(id === undefined || id === '')
             res.send({'error':1, 'message':'Invalid given id'});
 
-        mongo.getSecondaryQuestionByTroubleTicketId(req.body, (err, result) =>
+        else mongo.getSecondaryQuestionByTroubleTicketId(req.body, (err, result) =>
         {
            if(err !== null)
                res.send({'error':1, 'message':'Failed to retrieve secondary Tickets'});

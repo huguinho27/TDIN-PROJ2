@@ -9,7 +9,7 @@ module.exports =
         if(id === undefined || id === '')
             res.send({'error': 1, 'message': 'Invalid id' });
 
-        mongo.getUserById(req.body, (err1, res1) =>
+        else mongo.getUserById(req.body, (err1, res1) =>
         {
 
             if(err1 !== null)

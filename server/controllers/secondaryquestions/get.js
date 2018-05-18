@@ -9,7 +9,7 @@ module.exports =
             if(id === undefined || id === '')
                 res.send({'error':1, 'message':'Invalid given id'});
 
-            mongo.getSecondaryQuestionById(req.body, (err1, result1) =>
+            else mongo.getSecondaryQuestionById(req.body, (err1, result1) =>
             {
                 if(err1 !== null)
                     res.send({'error':1, 'message':'Failed to get secondary question by id'});
