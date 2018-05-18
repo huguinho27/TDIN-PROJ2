@@ -1,4 +1,5 @@
 const mongo = require('../../models/db');
+const nodemailer = require('../../nodemailer/nodemailer');
 
 module.exports =
 {
@@ -16,8 +17,24 @@ module.exports =
                 return res.send({'error':1, 'message':err});
             else
             {
-                return res.send({'error': 0, 'message': 'OK'});
-                //send mail here
+                mongo.getTroubleTicketById(req.body, (err1, result1) =>
+                {
+                    if(err1 !== null)
+                        return res.send({'error':1, 'message':'Failed to get trouble ticket from db in order to send mail'});
+                    else
+                    {
+                        nodemailer.sendMail(
+                            {
+                                'description':result1.description,
+                                'title':result1.title,
+                                'email':result1.email
+                            },
+                            (err2, res2) => {if(err2 !== null) console.log(err2);});
+
+                        return res.send({'error': 0, 'message': 'OK'});
+                    }
+                });
+
             }
         });
     }

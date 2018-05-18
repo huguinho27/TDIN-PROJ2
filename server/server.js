@@ -21,22 +21,13 @@ mongo.connectToServer((err) =>
         mongo.ensureUsersIndex();
     }
 });
-/*
-nodemailer.connectNodemailer((err, account) =>
+
+nodemailer.connectNodemailer((account) =>
 {
-    if(err) console.error("Failed to connect NodeMailer" + err);
-    else
-    {
-        console.log("Connected to nodemailer with account " + account.user + " " + account.pass);
-        nodemailer.sendMail({'email':'nuno_mgl@hotmail.com', 'title':'ja foste mano', 'description':'como e que e'}, (err, info) =>
-        {
-           console.log(err, info);
-        });
-    }
-
-
+    if(account === null) console.error("Failed to connect NodeMailer");
+    else console.log("Connected to nodemailer with account " + account.user + " " + account.pass);
 });
-*/
+
 
 app.listen(port, (err) =>
 {

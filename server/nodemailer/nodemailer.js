@@ -6,22 +6,16 @@ module.exports =
 {
     connectNodemailer: (callback) =>
     {
-        nodemailer.createTestAccount((err, account) =>
+        transporter = nodemailer.createTransport(
         {
-            // create reusable transporter object using the default SMTP transport
-            transporter = nodemailer.createTransport(
-            {
-                host: 'smtp.ethereal.email',
-                port: 587,
-                secure: false, // true for 465, false for other ports
-                auth: {
-                    user: account.user, // generated ethereal user
-                    pass: account.pass // generated ethereal password
-                }
-            });
-
-            callback(err, account);
+            service: 'gmail',
+            auth: {
+                user: 'cicawanabe@gmail.com', // generated ethereal user
+                pass: 'cicawanab3' // generated ethereal password
+            }
         });
+
+        callback(transporter);
     },
 
     sendMail: (mailOptions, callback) =>
@@ -49,7 +43,7 @@ module.exports =
             transporter.sendMail(options, (err, info) =>
             {
                 if(err !== null)
-                    callback('Failed to send email', null);
+                    callback('Solved trouble ticket but failed to send email', null);
                 else
                     callback(null, info);
             });
