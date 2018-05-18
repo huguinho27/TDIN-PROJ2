@@ -15,6 +15,33 @@ namespace WindowsFormsApp1
         public viewASubTicketITSolver()
         {
             InitializeComponent();
+            departmentTextBox.Text = "Department";
+            departmentTextBox.Enabled = false;
         }
+
+        public void changeStateText(string newText)
+        {
+            this.statusTextBox.Text = newText;
+            this.statusTextBox.Enabled = false;
+        }
+
+        public void changeTitleText(string newText)
+        {
+            this.titleTextBox.Text = newText;
+            this.titleTextBox.Enabled = false;
+        }
+
+        public void changeDescriptionText(string newText)
+        {
+            this.descriptionTextBox.Text = newText;
+            this.descriptionTextBox.Enabled = false;
+        }
+
+        public void changeAnswerText(string newText)
+        {
+            this.answerTextBox.Text = newText;
+            this.answerTextBox.Enabled = false;
+        }
+
     }
 }

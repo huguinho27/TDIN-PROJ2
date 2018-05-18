@@ -228,12 +228,13 @@ module.exports =
     solveTroubleTicket: (data, callback) =>
     {
 
-        _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.troubleTicketId}).toArray((err, docs) =>
+        _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.id}).toArray((err, docs) =>
         {
            if(err)
                return callback('Could not retrieve Secondary Tickets', null);
            else
                {
+                   console.log(data.troubleTicketId);
                    docs.forEach((obj) =>
                    {
                        if(obj.state === 'waiting')

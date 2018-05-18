@@ -244,12 +244,17 @@ namespace WindowsFormsApp1
             foreach (TroubleTicket ticket in response3.secondaryQuestions)
             {
                 wind.addSubTicket(ticket.id, ticket.title, ticket.state);
-                if (ticket.state.Equals("unsolved"))
+                if (ticket.state.Equals("waiting"))
                     ctrl = true;
             }
-            if (ctrl == true || response3.secondaryQuestions.Count == 0)
+
+            if (ctrl == true)
+            {
                 wind.makeSubmitButtonUclickable();
+                wind.makeAnswerTextBoxUnavailable();
+            }
             wind.ShowDialog();
+            this.refreshButton_Click(sender,e);
         }
     }
 }

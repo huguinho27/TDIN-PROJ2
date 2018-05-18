@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
             request.description = this.descriptionTextBox.Text;
             request.name = this.solverName;
             request.title = titleTextBox.Text;
+            request.troubleTicketId = this.primaryTicketid;
 
             ResponseCreateSecondaryTicket response = (ResponseCreateSecondaryTicket)WebRequestPost.makeRequest<ResponseCreateSecondaryTicket>("/secondaryquestions/add", request);
             if (response.error.Equals("1"))
