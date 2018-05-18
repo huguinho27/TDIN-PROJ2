@@ -155,6 +155,17 @@ public class RequestSecondaryQuestions : Request
     public string id { get; set; }
 }
 
+public class RequestSingleSecondaryQuestion : Request
+{
+    public string id { get; set; }
+}
+
+public class RequestSolveTicket : Request
+{
+    public string id { get; set; }
+    public string answer { get; set; }
+}
+
 
 
 /**
@@ -222,9 +233,21 @@ public class ResponseTroubleTicket : Response
 
 public class ResponseAssign : Response {}
 
+public class ResponseSolveTicket : Response {}
+
 public class ResponseSecondaryQuestions : Response
 {
     public List<TroubleTicket> secondaryQuestions { get; set; }
+}
+
+public class ResponseSingleSecondaryQuestion : Response
+{
+    public string title { get; set; }
+    public string description { get; set; }
+    public string state { get; set; }
+    public string answer { get; set; }
+    public string id { get; set; }
+    public string troubleTicketId { get; set; }
 }
 
 /**

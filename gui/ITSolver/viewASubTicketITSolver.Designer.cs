@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.departmentTextBox = new System.Windows.Forms.TextBox();
             this.departmentLabel = new System.Windows.Forms.Label();
-            this.refreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // answerTextBox
@@ -140,21 +139,11 @@
             this.departmentLabel.TabIndex = 25;
             this.departmentLabel.Text = "Department";
             // 
-            // refreshButton
-            // 
-            this.refreshButton.Location = new System.Drawing.Point(611, 65);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(88, 42);
-            this.refreshButton.TabIndex = 28;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
-            // 
             // viewASubTicketITSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 383);
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.departmentTextBox);
             this.Controls.Add(this.departmentLabel);
             this.Controls.Add(this.answerTextBox);
@@ -185,6 +174,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox departmentTextBox;
         private System.Windows.Forms.Label departmentLabel;
-        private System.Windows.Forms.Button refreshButton;
     }
 }

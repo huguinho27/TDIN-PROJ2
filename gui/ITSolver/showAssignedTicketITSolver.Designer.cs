@@ -130,6 +130,7 @@
             this.submitButton.TabIndex = 9;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // answerTextBox
             // 
@@ -181,6 +182,7 @@
             this.subTicketsList.TabIndex = 24;
             this.subTicketsList.UseCompatibleStateImageBehavior = false;
             this.subTicketsList.View = System.Windows.Forms.View.Details;
+            this.subTicketsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.subTicketsList_MouseDoubleClick);
             // 
             // ID
             // 

@@ -53,6 +53,11 @@ namespace WindowsFormsApp1
             subTicketsList.Items.Add(new ListViewItem(row));
         }
 
+        public void makeAnswerTextBoxUnavailable()
+        {
+            answerTextBox.Enabled = false;
+        }
+
         private void issueSubTicketButton_Click(object sender, EventArgs e)
         {
             createSubTicket subticket = new createSubTicket();
@@ -60,7 +65,7 @@ namespace WindowsFormsApp1
             subticket.solverName = this.name;
             subticket.primaryTicketid = this.ticketId;
             subticket.ShowDialog();
-            this.refreshButton_Click(sender,e);
+            this.refreshButton_Click(sender, e);
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -87,11 +92,68 @@ namespace WindowsFormsApp1
             foreach (TroubleTicket ticket in response3.secondaryQuestions)
             {
                 addSubTicket(ticket.id, ticket.title, ticket.state);
-                if (ticket.state.Equals("unsolved"))
+                if (ticket.state.Equals("waiting"))
                     ctrl = true;
             }
+
             if (ctrl == true)
+            {
                 makeSubmitButtonUclickable();
+                makeAnswerTextBoxUnavailable();
+            }
+        }
+
+        private void subTicketsList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            viewASubTicketITSolver wind = new viewASubTicketITSolver();
+
+            RequestSingleSecondaryQuestion request = new RequestSingleSecondaryQuestion();
+            request.id = this.subTicketsList.SelectedItems[0].SubItems[0].Text;
+
+            ResponseSingleSecondaryQuestion response = (ResponseSingleSecondaryQuestion)WebRequestPost.makeRequest<ResponseSingleSecondaryQuestion>("/secondaryquestions/get", request);
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+
+            wind.changeAnswerText(response.answer);
+            wind.changeDescriptionText(response.description);
+            wind.changeStateText(response.state);
+            wind.changeTitleText(response.title);
+            wind.ShowDialog();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            if (!answerTextBox.Text.Equals(""))
+            {
+                RequestSolveTicket request = new RequestSolveTicket();
+                request.id = this.ticketId;
+                request.answer = answerTextBox.Text;
+
+                ResponseSolveTicket response = (ResponseSolveTicket)WebRequestPost.makeRequest<ResponseSolveTicket>("/troubletickets/solve", request);
+                if (response.error.Equals("1"))
+                    MessageBox.Show(
+                        response.message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                else if (!response.error.Equals("0"))
+                    MessageBox.Show(
+                        "What??",
+                        "Seriously, what?",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Question);
+                this.Hide();
+            }
         }
     }
 }
