@@ -118,6 +118,7 @@
             this.assignedTicketsList.TabIndex = 23;
             this.assignedTicketsList.UseCompatibleStateImageBehavior = false;
             this.assignedTicketsList.View = System.Windows.Forms.View.Details;
+            this.assignedTicketsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.assignedTicketsList_MouseDoubleClick);
             // 
             // ID
             // 

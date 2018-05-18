@@ -124,12 +124,33 @@ public class RequestCreateTicket : Request
     public string description { get; set; }
 }
 
+public class RequestCreateSecondaryTicket : Request
+{
+    public string email { get; set; }
+    public string name { get; set; }
+    public string title { get; set; }
+    public string description { get; set; }
+    public string troubleTicketId { get; set; }
+}
+
 public class RequestTroubleTicket : Request
 {
     public string id { get; set; }
 }
 
 public class RequestUser : Request
+{
+    public string id { get; set; }
+}
+
+public class RequestAssign : Request
+{
+    public string id { get; set; }
+    public string solverId { get; set; }
+    public string solverName { get; set; }
+}
+
+public class RequestSecondaryQuestions : Request
 {
     public string id { get; set; }
 }
@@ -180,6 +201,11 @@ public class ResponseCreateTicket : Response
     public string insertedId { get; set; }
 }
 
+public class ResponseCreateSecondaryTicket : Response
+{
+    public string insertedId { get; set; }
+}
+
 public class ResponseTroubleTicket : Response
 {
     public string email { get; set; }
@@ -194,6 +220,12 @@ public class ResponseTroubleTicket : Response
     public string answer { get; set; }
 }
 
+public class ResponseAssign : Response {}
+
+public class ResponseSecondaryQuestions : Response
+{
+    public List<TroubleTicket> secondaryQuestions { get; set; }
+}
 
 /**
  * Custom Classes 

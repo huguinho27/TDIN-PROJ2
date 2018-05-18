@@ -52,5 +52,46 @@ namespace WindowsFormsApp1
             string[] row = { ID, title, status };
             subTicketsList.Items.Add(new ListViewItem(row));
         }
+
+        private void issueSubTicketButton_Click(object sender, EventArgs e)
+        {
+            createSubTicket subticket = new createSubTicket();
+            subticket.solverEmail = this.email;
+            subticket.solverName = this.name;
+            subticket.primaryTicketid = this.ticketId;
+            subticket.ShowDialog();
+            this.refreshButton_Click(sender,e);
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            RequestSecondaryQuestions request3 = new RequestSecondaryQuestions();
+            request3.id = this.ticketId;
+
+            ResponseSecondaryQuestions response3 = (ResponseSecondaryQuestions)WebRequestPost.makeRequest<ResponseSecondaryQuestions>("/troubletickets/getsecondaryquestions", request3);
+            if (response3.error.Equals("1"))
+                MessageBox.Show(
+                    response3.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response3.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            bool ctrl = false;
+            this.subTicketsList.Items.Clear();
+
+            foreach (TroubleTicket ticket in response3.secondaryQuestions)
+            {
+                addSubTicket(ticket.id, ticket.title, ticket.state);
+                if (ticket.state.Equals("unsolved"))
+                    ctrl = true;
+            }
+            if (ctrl == true)
+                makeSubmitButtonUclickable();
+        }
     }
 }

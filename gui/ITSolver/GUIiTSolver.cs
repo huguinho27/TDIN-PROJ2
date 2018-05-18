@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     {
         public string name { get; set; }
         public string email { get; set; }
-        public string id { get; set; }
+        public string solverid { get; set; }
 
         public GUIiTSolver()
         {
@@ -55,7 +55,32 @@ namespace WindowsFormsApp1
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            //TODO
+            RequestUser request = new RequestUser();
+            request.id = this.solverid;
+            
+            //Requests trouble tickets
+            ResponseUser response = (ResponseUser)WebRequestPost.makeRequest<ResponseUser>("/users/get", request);
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+
+            assignedTicketsList.Items.Clear();
+            unassignedTicketsList.Items.Clear();
+
+            //Update both trouble ticket list
+            foreach (TroubleTicket ticket in response.solverTickets)
+                addAssignedTicket(ticket.id, ticket.title, ticket.state);
+            foreach (TroubleTicket ticket in response.unassignedTickets)
+                addUnassignedTicket(ticket.id, ticket.title, ticket.state);
         }
 
         private void GUIiTSolver_FormClosed(object sender, FormClosedEventArgs e)
@@ -70,27 +95,161 @@ namespace WindowsFormsApp1
 
         private void unassignedTicketsList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Resquest assign
+            //--------------------------------------------
+            //Assigns the clicked trouble ticket to solver
+            //--------------------------------------------
+            RequestAssign request = new RequestAssign();
+            request.id = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
+            request.solverId = this.solverid;
+            request.solverName = this.name;
+
+            ResponseAssign response = (ResponseAssign)WebRequestPost.makeRequest<ResponseAssign>("/troubletickets/assign", request);
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            //--------------------------------------------
+
+            //Creates new window
             showAssignedTicketITSolver wind = new showAssignedTicketITSolver();
             wind.name = this.name;
             wind.email = this.email;
-            wind.solverid = this.id;
+            wind.solverid = this.solverid;
             wind.ticketId = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
-            bool ctrl = false;
-            //request GET? ou vem no anterior?
-            //wind.changeAnswerText(response.answer);
-            //wind.changeDescriptionText(response.description);
-            //wind.changeStatusText(response.state);
-            //wind.changeTitleText(response.title);
-            /*foreach(TroubleTicket ticket in response.subtickets) {
-                wind.addSubTicket(ticket._id, ticket.title, ticket.state);
-                if (ticket.state,Equals("unsolved")
+            bool ctrl = true;
+
+            //--------------------------------------------
+            //Request information for the clicked trouble ticket
+            //--------------------------------------------
+            RequestTroubleTicket request2 = new RequestTroubleTicket();
+            request2.id = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
+
+            ResponseTroubleTicket response2 = (ResponseTroubleTicket)WebRequestPost.makeRequest<ResponseTroubleTicket>("/troubletickets/get", request2);
+            if (response2.error.Equals("1"))
+                MessageBox.Show(
+                    response2.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response2.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            //--------------------------------------------
+
+            wind.changeAnswerText(response2.answer);
+            wind.changeDescriptionText(response2.description);
+            wind.changeStatusText(response2.state);
+            wind.changeTitleText(response2.title);
+
+            //--------------------------------------------
+            //Request for secondary questions
+            //--------------------------------------------
+            RequestSecondaryQuestions request3 = new RequestSecondaryQuestions();
+            request3.id = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
+
+            ResponseSecondaryQuestions response3 = (ResponseSecondaryQuestions)WebRequestPost.makeRequest<ResponseSecondaryQuestions>("/troubletickets/getsecondaryquestions", request3);
+            if (response3.error.Equals("1"))
+                MessageBox.Show(
+                    response3.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response3.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            //--------------------------------------------
+
+            foreach(TroubleTicket ticket in response3.secondaryQuestions) {
+                wind.addSubTicket(ticket.id, ticket.title, ticket.state);
+                if (ticket.state.Equals("unsolved"))
                     ctrl = true;
-             }*/
+             }
             if (ctrl == true)
                 wind.makeSubmitButtonUclickable();
-            wind.Show();
+            wind.ShowDialog();
 
+        }
+
+        private void assignedTicketsList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //Creates new window
+            showAssignedTicketITSolver wind = new showAssignedTicketITSolver();
+            wind.name = this.name;
+            wind.email = this.email;
+            wind.solverid = this.solverid;
+            wind.ticketId = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
+            bool ctrl = false;
+
+            //--------------------------------------------------
+            //Request information for the clicked trouble ticket
+            //--------------------------------------------------
+            RequestTroubleTicket request2 = new RequestTroubleTicket();
+            request2.id = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
+
+            ResponseTroubleTicket response2 = (ResponseTroubleTicket)WebRequestPost.makeRequest<ResponseTroubleTicket>("/troubletickets/get", request2);
+            if (response2.error.Equals("1"))
+                MessageBox.Show(
+                    response2.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response2.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            //--------------------------------------------
+
+            wind.changeAnswerText(response2.answer);
+            wind.changeDescriptionText(response2.description);
+            wind.changeStatusText(response2.state);
+            wind.changeTitleText(response2.title);
+
+            //--------------------------------------------
+            //Request for secondary questions
+            //--------------------------------------------
+            RequestSecondaryQuestions request3 = new RequestSecondaryQuestions();
+            request3.id = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
+
+            ResponseSecondaryQuestions response3 = (ResponseSecondaryQuestions)WebRequestPost.makeRequest<ResponseSecondaryQuestions>("/troubletickets/getsecondaryquestions", request3);
+            if (response3.error.Equals("1"))
+                MessageBox.Show(
+                    response3.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response3.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+            //--------------------------------------------
+
+            foreach (TroubleTicket ticket in response3.secondaryQuestions)
+            {
+                wind.addSubTicket(ticket.id, ticket.title, ticket.state);
+                if (ticket.state.Equals("unsolved"))
+                    ctrl = true;
+            }
+            if (ctrl == true || response3.secondaryQuestions.Count == 0)
+                wind.makeSubmitButtonUclickable();
+            wind.ShowDialog();
         }
     }
 }

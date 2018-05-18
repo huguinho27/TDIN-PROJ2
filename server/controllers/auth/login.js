@@ -44,7 +44,6 @@ module.exports =
                 }
                 else if(res1.department === '1')
                 {
-
                     //IT Solvers
                     mongo.getTroubleTicketsBySolver({'solverId':res1._id}, (err3, res3) =>
                     {

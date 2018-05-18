@@ -56,14 +56,14 @@ namespace WindowsFormsApp1
                     GUIiTSolver itsolver = new GUIiTSolver();
                     itsolver.name = response.name;
                     itsolver.email = response.email;
-                    itsolver.id = response.id;
+                    itsolver.solverid = response.id;
                     itsolver.changeNameLabelText(response.name);
                     itsolver.changeDepartmentLabelText("I.T - Solver");
                     itsolver.changeIDLabelText(response.id);
                     foreach (TroubleTicket ticket in response.solverTickets)
                         itsolver.addAssignedTicket(ticket.id, ticket.title, ticket.state);
-                    foreach (TroubleTicket ticket in response.unassignedTickets)
-                        itsolver.addUnassignedTicket(ticket.id, ticket.title, ticket.state);
+                    foreach (TroubleTicket ticket2 in response.unassignedTickets)
+                        itsolver.addUnassignedTicket(ticket2.id, ticket2.title, ticket2.state);
                     itsolver.Show();
                 }
                 else if (response.department.Equals("2"))

@@ -31,7 +31,7 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
-            this.subjectTextBox = new System.Windows.Forms.TextBox();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
             this.subjectLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.departmentLabel = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             this.submitButton.TabIndex = 22;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // descriptionTextBox
             // 
@@ -65,12 +66,12 @@
             this.descriptionLabel.TabIndex = 17;
             this.descriptionLabel.Text = "Description";
             // 
-            // subjectTextBox
+            // titleTextBox
             // 
-            this.subjectTextBox.Location = new System.Drawing.Point(157, 126);
-            this.subjectTextBox.Name = "subjectTextBox";
-            this.subjectTextBox.Size = new System.Drawing.Size(534, 20);
-            this.subjectTextBox.TabIndex = 16;
+            this.titleTextBox.Location = new System.Drawing.Point(157, 126);
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.Size = new System.Drawing.Size(534, 20);
+            this.titleTextBox.TabIndex = 16;
             // 
             // subjectLabel
             // 
@@ -78,9 +79,9 @@
             this.subjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subjectLabel.Location = new System.Drawing.Point(71, 126);
             this.subjectLabel.Name = "subjectLabel";
-            this.subjectLabel.Size = new System.Drawing.Size(63, 20);
+            this.subjectLabel.Size = new System.Drawing.Size(38, 20);
             this.subjectLabel.TabIndex = 15;
-            this.subjectLabel.Text = "Subject";
+            this.subjectLabel.Text = "Title";
             // 
             // label1
             // 
@@ -107,9 +108,7 @@
             // 
             this.departmentComboBox.FormattingEnabled = true;
             this.departmentComboBox.Items.AddRange(new object[] {
-            "Batata",
-            "Potato",
-            "Potateedede"});
+            "Department"});
             this.departmentComboBox.Location = new System.Drawing.Point(157, 85);
             this.departmentComboBox.Name = "departmentComboBox";
             this.departmentComboBox.Size = new System.Drawing.Size(121, 21);
@@ -125,7 +124,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.descriptionLabel);
-            this.Controls.Add(this.subjectTextBox);
+            this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.subjectLabel);
             this.Controls.Add(this.label1);
             this.Name = "createSubTicket";
@@ -139,7 +138,7 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.Label descriptionLabel;
-        private System.Windows.Forms.TextBox subjectTextBox;
+        private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.Label subjectLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label departmentLabel;

@@ -71,6 +71,7 @@
             // 
             this.titleTextBox.Location = new System.Drawing.Point(159, 120);
             this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.ReadOnly = true;
             this.titleTextBox.Size = new System.Drawing.Size(534, 20);
             this.titleTextBox.TabIndex = 2;
             // 
@@ -89,6 +90,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(159, 162);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ReadOnly = true;
             this.descriptionTextBox.Size = new System.Drawing.Size(534, 64);
             this.descriptionTextBox.TabIndex = 4;
             // 
@@ -106,6 +108,7 @@
             // 
             this.statusTextBox.Location = new System.Drawing.Point(159, 83);
             this.statusTextBox.Name = "statusTextBox";
+            this.statusTextBox.ReadOnly = true;
             this.statusTextBox.Size = new System.Drawing.Size(110, 20);
             this.statusTextBox.TabIndex = 6;
             // 
@@ -144,6 +147,7 @@
             this.issueSubTicketButton.TabIndex = 12;
             this.issueSubTicketButton.Text = "+ Issue Sub-ticket";
             this.issueSubTicketButton.UseVisualStyleBackColor = true;
+            this.issueSubTicketButton.Click += new System.EventHandler(this.issueSubTicketButton_Click);
             // 
             // subTicketLabel
             // 
@@ -163,6 +167,7 @@
             this.refreshButton.TabIndex = 19;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // subTicketsList
             // 

@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.refreshButton = new System.Windows.Forms.Button();
             this.ticketsLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ticketList = new System.Windows.Forms.ListView();
+            this.assignedTicketsList = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,26 +66,40 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Department Solver";
             // 
-            // ticketList
+            // assignedTicketsList
             // 
-            this.ticketList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.assignedTicketsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.Title,
             this.Status});
-            this.ticketList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.ticketList.Location = new System.Drawing.Point(85, 127);
-            this.ticketList.Name = "ticketList";
-            this.ticketList.Size = new System.Drawing.Size(615, 171);
-            this.ticketList.TabIndex = 19;
-            this.ticketList.UseCompatibleStateImageBehavior = false;
+            this.assignedTicketsList.Location = new System.Drawing.Point(85, 124);
+            this.assignedTicketsList.Name = "assignedTicketsList";
+            this.assignedTicketsList.Size = new System.Drawing.Size(615, 203);
+            this.assignedTicketsList.TabIndex = 24;
+            this.assignedTicketsList.UseCompatibleStateImageBehavior = false;
+            this.assignedTicketsList.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 107;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            this.Title.Width = 107;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 107;
             // 
             // GUIDeptSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 360);
-            this.Controls.Add(this.ticketList);
+            this.Controls.Add(this.assignedTicketsList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.ticketsLabel);
@@ -101,7 +114,7 @@
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Label ticketsLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView ticketList;
+        private System.Windows.Forms.ListView assignedTicketsList;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Status;

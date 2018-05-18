@@ -99,7 +99,7 @@ module.exports =
 
     getTroubleTicketsBySolver: (data, callback) =>
     {
-        _db.collection(troubleTicketsCollection).find({'solverId':data.solverId}).toArray((err, docs) =>
+        _db.collection(troubleTicketsCollection).find({'solverId':data.solverId.toString()}).toArray((err, docs) =>
         {
             callback(err, docs);
         });
@@ -160,7 +160,7 @@ module.exports =
             {
                 if(res.modifiedCount < 1)
                     callback('Trouble ticket already assign', null);
-                if(err === null)
+                else if(err === null)
                     callback(null, res);
                 else
                     callback('Failed to assign solver to ticket', null);
@@ -189,6 +189,7 @@ module.exports =
                         {$set: {'state':'waiting'}},
                         (err1, res1) =>
                         {
+                            console.log(err1, res1);
                             if(res1.modifiedCount < 1)
                                 callback('Failed to update trouble to waiting, probably is solved already', null);
                             else if(err1 === null)

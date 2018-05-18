@@ -44,3 +44,8 @@ API METHODS:
 	Receives: email, name, title, description, troubleTicketId
 	Returns : error, message, insertedId
 	Description: Creates a secondary question to a trouble ticket.
+
+- /secondaryquestions/get
+	Receives: id
+	Returns: title, description, _id, troubleTicketId, state, answer
+	Description: get secondary question
