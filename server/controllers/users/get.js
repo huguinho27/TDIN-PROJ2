@@ -7,13 +7,13 @@ module.exports =
         const id = req.body.id;
 
         if(id === undefined || id === '')
-            res.send({'error': 1, 'message': 'Invalid id' });
+            return res.send({'error': 1, 'message': 'Invalid id' });
 
         else mongo.getUserById(req.body, (err1, res1) =>
         {
 
             if(err1 !== null)
-                res.send({'error':1, 'message': err1});
+                return res.send({'error':1, 'message': err1});
             else
             {
                 if(res1.department === '2')
@@ -21,7 +21,7 @@ module.exports =
                     //Department Users
                     mongo.getTroubleTicketsByEmail({'email':res1.email}, (err2, res2) =>
                     {
-                        if(err2) res.send({'error':1, 'message': 'Error getting user tickets'});
+                        if(err2) return res.send({'error':1, 'message': 'Error getting user tickets'});
                         else
                         {
 
@@ -31,7 +31,7 @@ module.exports =
                                 delete tt._id;
                             });
 
-                            res.send({
+                            return res.send({
                                 'error':0,
                                 'message': 'OK',
                                 'email':res1.email,
@@ -47,11 +47,11 @@ module.exports =
                     //IT Solvers
                     mongo.getTroubleTicketsBySolver({'solverId':res1._id}, (err3, res3) =>
                     {
-                        if(err3) res.send({'error':1, 'message': 'Error getting solver tickets'});
+                        if(err3) return res.send({'error':1, 'message': 'Error getting solver tickets'});
                         else
                             mongo.getTroubleTicketsNotAssigned((err4, res4) =>
                             {
-                                if(err4) res.send({'error':1, 'message': 'Error getting solver not assigned tickets'});
+                                if(err4) return res.send({'error':1, 'message': 'Error getting solver not assigned tickets'});
                                 else
                                 {
                                     res3.forEach((tt) =>
@@ -67,7 +67,7 @@ module.exports =
                                     });
 
 
-                                    res.send({
+                                    return res.send({
                                         'error': 0,
                                         'message':'OK',
                                         'email':res1.email,
@@ -82,7 +82,7 @@ module.exports =
                     });
                 }
                 else
-                    res.send({'error':1, 'message': 'Invalid Department'});
+                    return res.send({'error':1, 'message': 'Invalid Department'});
             }
         });
     }

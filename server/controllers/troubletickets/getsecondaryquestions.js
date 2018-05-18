@@ -7,12 +7,12 @@ module.exports =
         const id = req.body.id;
 
         if(id === undefined || id === '')
-            res.send({'error':1, 'message':'Invalid given id'});
+            return res.send({'error':1, 'message':'Invalid given id'});
 
         else mongo.getSecondaryQuestionByTroubleTicketId(req.body, (err, result) =>
         {
            if(err !== null)
-               res.send({'error':1, 'message':'Failed to retrieve secondary Tickets'});
+               return res.send({'error':1, 'message':'Failed to retrieve secondary Tickets'});
            else
            {
                result.forEach((sq) =>
@@ -21,7 +21,7 @@ module.exports =
                   delete sq._id;
                });
 
-               res.send({
+               return res.send({
                    'error':0,
                    'message':'OK',
                    'secondaryQuestions': result

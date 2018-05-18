@@ -37,7 +37,7 @@ module.exports =
         bcrypt.hash(data.password, saltRounds, (err1, hash) =>
         {
             if(err1)
-                callback('Can\'t hash password', null);
+                return callback('Can\'t hash password', null);
             else
                 _db.collection(usersCollection).insertOne(
                     {
@@ -49,9 +49,9 @@ module.exports =
                     (err2, result) =>
                 {
                     if(err2)
-                        callback('User already exists', null);
+                        return callback('User already exists', null);
                     else
-                        callback(null, result);
+                        return callback(null, result);
                 });
         });
     },
@@ -61,14 +61,14 @@ module.exports =
         const id = data.id;
 
         if(id === undefined)
-            callback('Please Provide ID', null);
+            return callback('Please Provide ID', null);
 
         _db.collection(usersCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
         {
             if(err)
-                callback('Failed to retrieve user from database', null);
+                return callback('Failed to retrieve user from database', null);
             else
-                callback(null, res);
+                return callback(null, res);
         });
     },
 
@@ -79,12 +79,12 @@ module.exports =
 
         _db.collection(usersCollection).findOne({'email':email}, (err, res) =>
         {
-            if(err === null && res === null) callback('User does not exist', null);
+            if(err === null && res === null) return callback('User does not exist', null);
             else
                 bcrypt.compare(password, res.password, (err1, res1) =>
                 {
-                    if(err1) callback('Password does not match', null);
-                    else callback(null, {'email': email, 'name':res.name, 'department': res.department, '_id':res._id});
+                    if(err1) return callback('Password does not match', null);
+                    else return callback(null, {'email': email, 'name':res.name, 'department': res.department, '_id':res._id});
                 });
         });
     },
@@ -93,7 +93,7 @@ module.exports =
     {
         _db.collection(troubleTicketsCollection).find({'email':data.email}).toArray((err, docs) =>
         {
-            callback(err, docs);
+            return callback(err, docs);
         });
     },
 
@@ -101,7 +101,7 @@ module.exports =
     {
         _db.collection(troubleTicketsCollection).find({'solverId':data.solverId.toString()}).toArray((err, docs) =>
         {
-            callback(err, docs);
+            return callback(err, docs);
         });
     },
 
@@ -110,7 +110,7 @@ module.exports =
 
         _db.collection(troubleTicketsCollection).find({'state':'unassigned'}).toArray((err, docs) =>
         {
-            callback(err, docs);
+            return callback(err, docs);
         });
     },
 
@@ -118,7 +118,7 @@ module.exports =
     {
         _db.collection(troubleTicketsCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
         {
-            callback(err, res);
+            return callback(err, res);
         });
     },
 
@@ -126,7 +126,7 @@ module.exports =
     {
         _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.id}).toArray((err, docs) =>
         {
-            callback(err, docs);
+            return callback(err, docs);
         });
     },
 
@@ -145,9 +145,9 @@ module.exports =
             (err, res) =>
             {
                 if(err === null)
-                    callback(null, res);
+                    return callback(null, res);
                 else
-                    callback('Failed to Create new Ticket', null);
+                    return callback('Failed to Create new Ticket', null);
             });
     },
 
@@ -159,11 +159,11 @@ module.exports =
             (err, res) =>
             {
                 if(res !== null && res.matchedCount < 1)
-                    callback('Trouble ticket already assigned', null);
+                    return callback('Trouble ticket already assigned', null);
                 else if(err === null)
-                    callback(null, res);
+                    return callback(null, res);
                 else
-                    callback('Failed to assign solver to ticket', null);
+                    return callback('Failed to assign solver to ticket', null);
             });
     },
 
@@ -182,7 +182,7 @@ module.exports =
             (err, res) =>
             {
                 if(err !== null)
-                    callback('Failed to create Secondary Question', null);
+                    return callback('Failed to create Secondary Question', null);
                 else
                     _db.collection(troubleTicketsCollection).updateOne(
                         {'_id': new mongo.ObjectId(data.troubleTicketId),'state': {$ne: 'solved'}},
@@ -191,11 +191,11 @@ module.exports =
                         {
 
                             if(res1 !== null && res1.matchedCount < 1)
-                                callback('Failed to update trouble to waiting, probably is solved already', null);
+                                return callback('Failed to update trouble to waiting, probably is solved already', null);
                             else if(err1 === null)
-                                callback(null, res);
+                                return callback(null, res);
                             else
-                                callback('Failed to update trouble ticket to waiting', null);
+                                return callback('Failed to update trouble ticket to waiting', null);
                         }
                     );
             }
@@ -206,7 +206,7 @@ module.exports =
     {
         _db.collection(secondaryTicketsCollection).findOne({'_id': new mongo.ObjectId(data.id)}, (err, res) =>
         {
-            callback(err, res);
+            return callback(err, res);
         });
     },
 
@@ -218,9 +218,9 @@ module.exports =
             (err, res) =>
             {
                 if(err === null)
-                    callback(null, res);
+                    return callback(null, res);
                 else
-                    callback('Failed to solve Secondary Question', null);
+                    return callback('Failed to solve Secondary Question', null);
             }
         )
     },
@@ -231,13 +231,13 @@ module.exports =
         _db.collection(secondaryTicketsCollection).find({'troubleTicketId':data.troubleTicketId}).toArray((err, docs) =>
         {
            if(err)
-               callback('Could not retrieve Secondary Tickets', null);
+               return callback('Could not retrieve Secondary Tickets', null);
            else
                {
                    docs.forEach((obj) =>
                    {
                        if(obj.state === 'waiting')
-                           callback('Some secondary tickets are not yet solved', null);
+                           return callback('Some secondary tickets are not yet solved', null);
                    });
 
                    _db.collection(troubleTicketsCollection).updateOne(
@@ -245,9 +245,9 @@ module.exports =
                        {$set: {'answer': data.answer, 'state': 'solved'}},
                        (err, res) => {
                            if (err === null)
-                               callback(null, res);
+                               return callback(null, res);
                            else
-                               callback('Failed to solve Trouble Ticket', null);
+                               return callback('Failed to solve Trouble Ticket', null);
                        }
                );
            }
