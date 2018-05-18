@@ -15,7 +15,10 @@ module.exports =
             if(err !== null)
                 res.send({'error':1, 'message':err});
             else
-                res.send({'error':0, 'message':'OK'});
+            {
+                res.send({'error': 0, 'message': 'OK'});
+                //send mail here
+            }
         });
     }
 };
