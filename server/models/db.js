@@ -234,11 +234,11 @@ module.exports =
                return callback('Could not retrieve Secondary Tickets', null);
            else
                {
-                   docs.forEach((obj) =>
+                   for(let i = 0; i < docs.length; i++)
                    {
-                       if(obj.state === 'waiting')
+                       if(docs[i].state === 'waiting')
                            return callback('Some secondary tickets are not yet solved', null);
-                   });
+                   }
 
                    _db.collection(troubleTicketsCollection).updateOne(
                        {'_id': new mongo.ObjectId(data.id)},
