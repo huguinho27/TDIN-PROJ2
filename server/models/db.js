@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const rabbitmq = require('../rabbitmq/rabbitmq');
 const saltRounds = 10;
 const mongo = require('mongodb');
 const mongoURL = "mongodb://localhost:27017/";
@@ -6,6 +7,7 @@ const mongoDB = "ttdb";
 const usersCollection = "users";
 const troubleTicketsCollection = "troubleTickets";
 const secondaryTicketsCollection = "secondaryQuestions";
+
 let _db;
 
 module.exports =
@@ -169,35 +171,41 @@ module.exports =
 
     createSecondaryQuestion: (data, callback) =>
     {
+        const insertData =
+        {
+            'email':data.email,
+            'name':data.name,
+            'title':data.title,
+            'description':data.description,
+            'troubleTicketId': data.troubleTicketId,
+            'date': (new Date).getTime(),
+            'state':'waiting'
+        };
+
         _db.collection(secondaryTicketsCollection).insertOne(
-            {
-                'email':data.email,
-                'name':data.name,
-                'title':data.title,
-                'description':data.description,
-                'troubleTicketId': data.troubleTicketId,
-                'date': (new Date).getTime(),
-                'state':'waiting'
-            },
+            insertData,
             (err, res) =>
             {
                 if(err !== null)
                     return callback('Failed to create Secondary Question', null);
                 else
+                {
                     _db.collection(troubleTicketsCollection).updateOne(
-                        {'_id': new mongo.ObjectId(data.troubleTicketId),'state': {$ne: 'solved'}},
-                        {$set: {'state':'waiting'}},
-                        (err1, res1) =>
-                        {
+                        {'_id': new mongo.ObjectId(data.troubleTicketId), 'state': {$ne: 'solved'}},
+                        {$set: {'state': 'waiting'}},
+                        (err1, res1) => {
 
-                            if(res1 !== null && res1.matchedCount < 1)
+                            if (res1 !== null && res1.matchedCount < 1)
                                 return callback('Failed to update trouble to waiting, probably is solved already', null);
-                            else if(err1 === null)
+                            else if (err1 === null)
                                 return callback(null, res);
                             else
                                 return callback('Failed to update trouble ticket to waiting', null);
-                        }
-                    );
+                    });
+
+                    //Send inserted secondary question through rabbit
+                    rabbitmq.send(insertData.stringify())
+                }
             }
         );
     },
