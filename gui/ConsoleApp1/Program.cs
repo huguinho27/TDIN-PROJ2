@@ -95,13 +95,14 @@ public class WebRequestPost
 
 
 
-/**
- * REQUEST CLASSES
- */
-/*
- * Generic Request, not possible to use 
- */
-public abstract class Request{}
+
+    /**
+     * REQUEST CLASSES
+     */
+    /*
+     * Generic Request, not possible to use 
+     */
+    public abstract class Request{}
 public class RequestRegister : Request
 {
     public string email { get; set; }
