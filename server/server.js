@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const routes = require('./controllers');
 const mongo = require('./models/db');
 const nodemailer = require('./nodemailer/nodemailer');
+const rabbit = require('./rabbitmq/rabbitmq');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,9 +13,9 @@ app.use(bodyParser.json());
 
 app.use('/', routes);
 
-mongo.connectToServer((err) =>
+mongo.connectToServer((err1) =>
 {
-    if(err) console.error("Mongodb error: " + err);
+    if(err1) console.error("Mongodb error: " + err1);
     else
     {
         console.log("Connected to MongoDB");
@@ -28,6 +29,12 @@ nodemailer.connectNodemailer((account) =>
     else console.log("Connected to nodemailer with account " + account.user + " " + account.pass);
 });
 
+rabbit.connect((err2, conn) =>
+{
+    if(err2 !== null && conn === null) console.error("Failed to create Rabbit channel");
+    else console.log("Connected to RabbitMQ");
+    rabbit.send("general kenobi", (fail, sent) => {});
+});
 
 app.listen(port, (err) =>
 {
