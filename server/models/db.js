@@ -83,7 +83,7 @@ module.exports =
             else
                 bcrypt.compare(password, res.password, (err1, res1) =>
                 {
-                    if(err1) return callback('Password does not match', null);
+                    if(!res1) return callback('Password does not match', null);
                     else return callback(null, {'email': email, 'name':res.name, 'department': res.department, '_id':res._id});
                 });
         });

@@ -23,11 +23,12 @@ module.exports =
         const description = mailOptions.description;
         const title = mailOptions.title;
         const email = mailOptions.email;
+        const answer = mailOptions.answer;
 
-        if(description === undefined || email === undefined || title === undefined )
-            callback('Null description, title or email');
-        else if(description === '' || email === '' || title === '')
-            callback('No description, email or title');
+        if(description === undefined || email === undefined || title === undefined || answer === undefined)
+            callback('Null description, title, email or answer');
+        else if(description === '' || email === '' || title === '' || answer === '')
+            callback('No description, email, title orr answer');
         else if(!utils.validateEmail(email))
             callback('Invalid email');
         else
@@ -37,7 +38,8 @@ module.exports =
                 from: '"Cica Wanabe" <' + transporter.options.auth.user + '>',
                 to: email,
                 subject: 'RE: ' + title,
-                text: 'Your trouble ticket was solved see the answer bellow \n\n' + description
+                text: 'Your trouble ticket was solved see the question and an answer bellow: \n\n\n'
+                + description + "\n\n\nANSWER: " + answer
             };
 
             transporter.sendMail(options, (err, info) =>

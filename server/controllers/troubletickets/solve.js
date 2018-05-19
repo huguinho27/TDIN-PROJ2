@@ -26,6 +26,7 @@ module.exports =
                         nodemailer.sendMail(
                             {
                                 'description':result1.description,
+                                'answer':result1.answer,
                                 'title':result1.title,
                                 'email':result1.email
                             },

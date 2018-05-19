@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             //Making the register request
             ResponseLogin response = (ResponseLogin)WebRequestPost.makeRequest<ResponseLogin>("/auth/login", request);
               
-            if (response.error.Equals("1"))
+            if (response.error.Equals("1"))         
                 MessageBox.Show(
                     response.message,
                     "Error",
@@ -79,8 +79,9 @@ namespace WindowsFormsApp1
                         workerGui.addTickets(ticket.id, ticket.title, ticket.state);
                     workerGui.Show();
                 }
+                this.Hide();
             }
-            this.Hide();
+            
         }
 
         private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)

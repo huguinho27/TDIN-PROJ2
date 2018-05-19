@@ -118,13 +118,17 @@ namespace WindowsFormsApp1
                     MessageBoxIcon.Question);
             //--------------------------------------------
 
+            
+
             //Creates new window
             showAssignedTicketITSolver wind = new showAssignedTicketITSolver();
             wind.name = this.name;
             wind.email = this.email;
             wind.solverid = this.solverid;
             wind.ticketId = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
-            bool ctrl = true;
+            bool ctrl = false;
+
+            
 
             //--------------------------------------------
             //Request information for the clicked trouble ticket
@@ -180,7 +184,9 @@ namespace WindowsFormsApp1
              }
             if (ctrl == true)
                 wind.makeSubmitButtonUclickable();
+            refreshButton_Click(sender, e);
             wind.ShowDialog();
+            refreshButton_Click(sender, e);
 
         }
 
