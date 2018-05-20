@@ -26,7 +26,7 @@ mongo.connectToServer((err1) =>
 nodemailer.connectNodemailer((account) =>
 {
     if(account === null) console.error("Failed to connect NodeMailer");
-    else console.log("Connected to nodemailer with account " + account.user + " " + account.pass);
+    else console.log("Connected to nodemailer with account " + account.transporter.options.auth.user + " " + account.transporter.options.auth.pass);
 });
 
 rabbit.connect((err2, conn) =>

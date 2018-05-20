@@ -122,16 +122,22 @@ namespace WindowsFormsApp1
                     {"name",secondary.name },
                     {"title",secondary.title },
                     {"description",secondary.description },
-                    {"troubleTicketId" , secondary.troubleTicket_id},
+                    {"troubleTicketId" , secondary.troubleTicketId},
                     {"date", secondary.date },
                     {"state",secondary.state },
                     {"id",secondary.id }
                 };
 
                 this.collection.InsertOne(document);
-                refresh_Button();
+                BeginInvoke(new Action(() =>
+                {
+                    refresh_Button();
+                }));
+
             }
-            catch{}
+            catch (Exception e){
+                Console.WriteLine(e.ToString());
+            }
         }
 
         private void GUIDeptSolver_FormClosing(object sender, FormClosingEventArgs e)
@@ -143,6 +149,7 @@ namespace WindowsFormsApp1
         private void refresh_Button()
         {
             var documents = this.collection.Find(new BsonDocument()).ToList();
+            this.assignedTicketsList.Items.Clear();
 
             foreach (BsonDocument doc in documents)
             {
@@ -161,21 +168,33 @@ namespace WindowsFormsApp1
             ticket.secondaryQuestionID = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
             ticket.changeStateText(document["state"].ToString());
             ticket.changeTitleText(document["title"].ToString());
-            ticket.changeDescriptionText(document["descripton"].ToString());
+            ticket.changeDescriptionText(document["description"].ToString());
+            bool justWatchingTicket = false;
+            try
+            {
+                ticket.changeAnswerText(document["answer"].ToString());
+                justWatchingTicket = true;
+                ticket.solved = true;
+                ticket.deactivateSubmitButton();
+                ticket.unableAnswerText();
+                ticket.unableDescriptionText();
+                ticket.unableStateText();
+                ticket.unableTitleText();
+            }
+            catch {
+                justWatchingTicket = false;
+                ticket.solved = false;
+            }
             ticket.ShowDialog();
 
             //TODO ESPERAR PORR SOLVED
 
-            string newAnswer = ticket.newAnswer;
-            bool solved = ticket.solved;
-
-
-            if(solve)
+            if(ticket.solved && !justWatchingTicket)
             {
-                var update = Builders<BsonDocument>.Update.Set("state", "solved").Set("answer",newAnswer);
+                var update = Builders<BsonDocument>.Update.Set("state", "solved").Set("answer", ticket.answerText);
                 this.collection.UpdateOne(filter, update);
 
-                string secondaryTicket = "{{'id':'" + id + "'},{'answer':'" + newAnswer + "'},{'state':'solved'}}";
+                string secondaryTicket = "{\"id\":\""+ id +"\",\"answer\":\""+ ticket.answerText + "\",\"state\":\"solved\"}";
                 this.send(secondaryTicket);
             }
             refresh_Button();

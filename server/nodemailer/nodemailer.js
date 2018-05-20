@@ -37,7 +37,7 @@ module.exports =
             {
                 from: '"Cica Wanabe" <' + transporter.options.auth.user + '>',
                 to: email,
-                subject: 'RE: ' + title,
+                subject: title,
                 text: 'Your trouble ticket was solved see the question and an answer bellow: \n\n\n'
                 + description + "\n\n\nANSWER: " + answer
             };

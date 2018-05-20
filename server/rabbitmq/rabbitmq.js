@@ -22,18 +22,15 @@ module.exports =
         });
     },
 
-
-
     send: (msg, callback) =>
     {
         channel.sendToQueue(sendQueue, Buffer.from(msg));
-        callback(null, 'Message Sent');
     }
 };
 
 const receive =  (msg) =>
 {
-    console.log('Received %s', msg.content.toString());
+    //console.log('Received %s', msg.content.toString());
 
     try
     {
@@ -44,11 +41,12 @@ const receive =  (msg) =>
 
         if(id === undefined || answer === undefined || id === '' || answer === '')
             console.error('Invalid id or answer when trying to solve secondary question');
-        else
-            mongo.solveSecondaryQuestion(secondaryQuestion, (err, res) =>
-            {
+        else mongo.solveSecondaryQuestion(secondaryQuestion, (err, res) => {
                 if(err !== null) console.error(err);
             });
     }
-    catch(e) {}
+    catch(e) {
+
+        console.log(e.toString());
+    }
 };

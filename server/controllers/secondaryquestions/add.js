@@ -1,4 +1,5 @@
 const mongo = require('../../models/db');
+const rabbitmq = require('../../rabbitmq/rabbitmq');
 
 module.exports =
     {
@@ -24,6 +25,7 @@ module.exports =
                 else
                 {
                     //console.log(result.insertedId); //this is how u get the insertedId
+                    rabbitmq.send(JSON.stringify(result));
                     return res.send({'error': 0, 'message': 'OK', 'insertedId': result.insertedId});
                 }
             });

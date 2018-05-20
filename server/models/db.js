@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const rabbitmq = require('../rabbitmq/rabbitmq');
 const saltRounds = 10;
 const mongo = require('mongodb');
 const mongoURL = "mongodb://localhost:27017/";
@@ -199,13 +198,10 @@ module.exports =
                             if (res1 !== null && res1.matchedCount < 1)
                                 return callback('Failed to update trouble to waiting, probably is solved already', null);
                             else if (err1 === null)
-                                return callback(null, res);
+                                return callback(null, insertData);
                             else
                                 return callback('Failed to update trouble ticket to waiting', null);
                     });
-
-                    //Send inserted secondary question through rabbit
-                    rabbitmq.send(insertData.stringify())
                 }
             }
         );

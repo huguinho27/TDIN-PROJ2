@@ -285,7 +285,7 @@ public class SecondaryTroubleTicket
     public string date { get; set; }
     public string description { get; set; }
     public string id { get; set; }
-    public string troubleTicket_id { get; set; }
+    public string troubleTicketId { get; set; }
     public string state { get; set; }
     public string answer { get; set; }
 }

@@ -13,10 +13,32 @@ namespace WindowsFormsApp1
     public partial class showAssignedTicket : Form
     {
         public string secondaryQuestionID;
+        public bool solved;
+        public string answerText;
 
         public showAssignedTicket()
         {
             InitializeComponent();
+        }
+
+        public void unableStateText()
+        {
+            this.statusTextBox.Enabled = false;
+        }
+
+        public void unableTitleText()
+        {
+            this.titleTextBox.Enabled = false;
+        }
+
+        public void unableDescriptionText()
+        {
+            this.descriptionTextBox.Enabled = false;
+        }
+
+        public void unableAnswerText()
+        {
+            this.answerTextBox.Enabled = false;
         }
 
         public void changeStateText(string msg)
@@ -34,6 +56,16 @@ namespace WindowsFormsApp1
             this.descriptionTextBox.Text = msg;
         }
 
+        public void changeAnswerText(string msg)
+        {
+            this.answerTextBox.Text = msg;
+        }
+
+        public void deactivateSubmitButton()
+        {
+            this.submitButton.Enabled = false;
+        }
+
         private void submitButton_Click(object sender, EventArgs e)
         {
             if (answerTextBox.Text.Equals(""))
@@ -45,25 +77,8 @@ namespace WindowsFormsApp1
                     MessageBoxIcon.Error);
                 return;
             }
-
-            RequestSolveSecondaryQuestion request = new RequestSolveSecondaryQuestion();
-            request.id = this.secondaryQuestionID;
-            request.answer = this.answerTextBox.Text;
-
-            ResponseSolveSecondaryQuestion response = (ResponseSolveSecondaryQuestion)WebRequestPost.makeRequest<ResponseSolveSecondaryQuestion>("/secondaryquestions/solve", request);
-            if (response.error.Equals("1"))
-                MessageBox.Show(
-                    response.message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            else if (!response.error.Equals("0"))
-                MessageBox.Show(
-                    "What??",
-                    "Seriously, what?",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Question);
-
+            this.solved = true;
+            this.answerText = this.answerTextBox.Text;
             this.Hide();
 
         }
