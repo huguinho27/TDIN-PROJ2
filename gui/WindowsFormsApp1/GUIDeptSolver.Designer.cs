@@ -45,6 +45,7 @@
             this.refreshButton.TabIndex = 15;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // ticketsLabel
             // 
@@ -78,21 +79,22 @@
             this.assignedTicketsList.TabIndex = 24;
             this.assignedTicketsList.UseCompatibleStateImageBehavior = false;
             this.assignedTicketsList.View = System.Windows.Forms.View.Details;
+            this.assignedTicketsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.assignedTicketsList_MouseDoubleClick);
             // 
             // ID
             // 
             this.ID.Text = "ID";
-            this.ID.Width = 107;
+            this.ID.Width = 205;
             // 
             // Title
             // 
             this.Title.Text = "Title";
-            this.Title.Width = 107;
+            this.Title.Width = 205;
             // 
             // Status
             // 
             this.Status.Text = "Status";
-            this.Status.Width = 107;
+            this.Status.Width = 204;
             // 
             // GUIDeptSolver
             // 

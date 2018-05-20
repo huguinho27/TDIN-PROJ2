@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         private IMongoCollection<BsonDocument> collection;
         private JavaScriptSerializer serializer;
 
-
         public GUIDeptSolver()
         {
             connectToMongo();
@@ -32,9 +31,9 @@ namespace WindowsFormsApp1
             refresh_Button();
         }
 
-        public void newSecondaryTicket(string message)
+        public void newSecondaryTicket(string id, string title, string state)
         {
-            string[] row = { "bla", "bla", "bla" };
+            string[] row = { id , title, state };
             this.assignedTicketsList.Items.Add(new ListViewItem(row));
         }
 
@@ -123,7 +122,7 @@ namespace WindowsFormsApp1
                     {"name",secondary.name },
                     {"title",secondary.title },
                     {"description",secondary.description },
-                    {"troubleTocketId" , secondary.troubleTicket_id},
+                    {"troubleTicketId" , secondary.troubleTicket_id},
                     {"date", secondary.date },
                     {"state",secondary.state },
                     {"id",secondary.id }
@@ -172,37 +171,44 @@ namespace WindowsFormsApp1
             foreach (BsonDocument doc in documents)
             {
                 //TODO: MASTER HUGO INSERT IN ROWS
+                //this.newSecondaryTicket(doc["id"].ToString(), doc["title"].ToString(), doc["state"].ToString());
                 Console.WriteLine(doc["state"]);
             }
         }
 
-
-
-        /*
-        public void listen()
+        private void assignedTicketsList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection()) 
-            using (var channel = connection.CreateModel())
-            {
-                channel.QueueDeclare(queue: "nodeQueue", durable: false, exclusive: false, autoDelete: false, arguments: null);
+            RequestSingleSecondaryQuestion request = new RequestSingleSecondaryQuestion();
+            request.id = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
 
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
-                {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(" [x] Received {0}", message);
-                    newSecondaryTicket(message);
-                };
-                channel.BasicConsume(queue: "nodeQueue", autoAck: true, consumer: consumer);
+            ResponseSingleSecondaryQuestion response = (ResponseSingleSecondaryQuestion)WebRequestPost.makeRequest<ResponseSingleSecondaryQuestion>("/secondaryquestions/get", request);
+            if (response.error.Equals("1"))
+                MessageBox.Show(
+                    response.message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else if (!response.error.Equals("0"))
+                MessageBox.Show(
+                    "What??",
+                    "Seriously, what?",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
-            }
+            showAssignedTicket ticket = new showAssignedTicket();
+            ticket.secondaryQuestionID = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
+            ticket.changeStateText(response.state);
+            ticket.changeTitleText(response.title);
+            ticket.changeDescriptionText(response.description);
+            ticket.ShowDialog();
+            //TODO:refresh?
         }
-        */
 
-            }
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+    }
 }
 

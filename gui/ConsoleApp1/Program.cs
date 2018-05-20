@@ -167,6 +167,12 @@ public class RequestSolveTicket : Request
     public string answer { get; set; }
 }
 
+public class RequestSolveSecondaryQuestion : Request
+{
+    public string id { get; set; }
+    public string answer { get; set; }
+}
+
 
 
 /**
@@ -235,6 +241,8 @@ public class ResponseTroubleTicket : Response
 public class ResponseAssign : Response {}
 
 public class ResponseSolveTicket : Response {}
+
+public class ResponseSolveSecondaryQuestion : Response { }
 
 public class ResponseSecondaryQuestions : Response
 {
