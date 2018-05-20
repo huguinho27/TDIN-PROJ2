@@ -139,30 +139,6 @@ namespace WindowsFormsApp1
             Application.Exit();
         }
 
-        private void secondary_ticketsList_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            //TODO SABER ID DO SECONDARY TROUBLETICKET
-            var id = "1124241241";
-            var filter = Builders<BsonDocument>.Filter.Eq("id", id);
-            var document = this.collection.Find(filter).First();
-
-            var answer = document["answer"];
-            //TODO CRIAR JANELA
-            //ESPERAR QUE FECHE
-            // VERIFICAR SE CARREGOU NO SUBMIT E SE ANSWER E DIFERENTE
-            var newAnswer = "";
-
-            //SE DE FACTO FOR DIFERENTE
-
-            //atualalizer na db local...
-            var update = Builders<BsonDocument>.Update.Set("state", "solved");
-            this.collection.UpdateOne(filter, update);
-
-            //enviar por mensagem
-            string secondaryTicket = "{{'answer':'" + newAnswer + "'},{'state':'solved'}}";
-            this.send(secondaryTicket);
-            refresh_Button();
-        }
 
         private void refresh_Button()
         {
@@ -170,43 +146,44 @@ namespace WindowsFormsApp1
 
             foreach (BsonDocument doc in documents)
             {
-                //TODO: MASTER HUGO INSERT IN ROWS
-                //this.newSecondaryTicket(doc["id"].ToString(), doc["title"].ToString(), doc["state"].ToString());
-                Console.WriteLine(doc["state"]);
+                if(doc["id"] != null && doc["title"] != null && doc["state"] != null)
+                    this.newSecondaryTicket(doc["id"].ToString(), doc["title"].ToString(), doc["state"].ToString());
             }
         }
 
         private void assignedTicketsList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            RequestSingleSecondaryQuestion request = new RequestSingleSecondaryQuestion();
-            request.id = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
-
-            ResponseSingleSecondaryQuestion response = (ResponseSingleSecondaryQuestion)WebRequestPost.makeRequest<ResponseSingleSecondaryQuestion>("/secondaryquestions/get", request);
-            if (response.error.Equals("1"))
-                MessageBox.Show(
-                    response.message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            else if (!response.error.Equals("0"))
-                MessageBox.Show(
-                    "What??",
-                    "Seriously, what?",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Question);
+            var id = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
+            var filter = Builders<BsonDocument>.Filter.Eq("id", id);
+            var document = this.collection.Find(filter).First();
 
             showAssignedTicket ticket = new showAssignedTicket();
             ticket.secondaryQuestionID = this.assignedTicketsList.SelectedItems[0].SubItems[0].Text;
-            ticket.changeStateText(response.state);
-            ticket.changeTitleText(response.title);
-            ticket.changeDescriptionText(response.description);
+            ticket.changeStateText(document["state"].ToString());
+            ticket.changeTitleText(document["title"].ToString());
+            ticket.changeDescriptionText(document["descripton"].ToString());
             ticket.ShowDialog();
-            //TODO:refresh?
+
+            //TODO ESPERAR PORR SOLVED
+
+            string newAnswer = ticket.newAnswer;
+            bool solved = ticket.solved;
+
+
+            if(solve)
+            {
+                var update = Builders<BsonDocument>.Update.Set("state", "solved").Set("answer",newAnswer);
+                this.collection.UpdateOne(filter, update);
+
+                string secondaryTicket = "{{'id':'" + id + "'},{'answer':'" + newAnswer + "'},{'state':'solved'}}";
+                this.send(secondaryTicket);
+            }
+            refresh_Button();
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            //TODO
+            refresh_Button();
         }
 
     }
