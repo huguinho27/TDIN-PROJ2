@@ -105,6 +105,7 @@
             this.Controls.Add(this.ticketsLabel);
             this.Name = "GUIDeptSolver";
             this.Text = "GUIanotherDeptSolver";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GUIDeptSolver_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

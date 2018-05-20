@@ -190,6 +190,7 @@ module.exports =
                     return callback('Failed to create Secondary Question', null);
                 else
                 {
+                    insertData.id = res.insertedId;
                     _db.collection(troubleTicketsCollection).updateOne(
                         {'_id': new mongo.ObjectId(data.troubleTicketId), 'state': {$ne: 'solved'}},
                         {$set: {'state': 'waiting'}},

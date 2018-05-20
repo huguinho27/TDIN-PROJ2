@@ -79,11 +79,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApp1\DepartmentSolver.csproj">
-      <Project>{6b7ac537-6454-4252-a8bd-494242522dad}</Project>
-      <Name>DepartmentSolver</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
