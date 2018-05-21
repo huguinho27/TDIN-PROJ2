@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
         private void registerButton_Click(object sender, EventArgs e)
         {
             Common.Register reg = new Common.Register();
-            reg.Show();
+            reg.ShowDialog();
         }
 
         private void submitButton_Click(object sender, EventArgs e)

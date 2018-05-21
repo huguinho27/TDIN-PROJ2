@@ -143,6 +143,8 @@
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.issueTicketButton);
             this.Controls.Add(this.ticketsLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "WorkerGUI";
             this.Text = "WorkerGUI";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorkerGUI_FormClosed);

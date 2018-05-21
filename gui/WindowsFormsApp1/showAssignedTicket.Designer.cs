@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 404);
+            this.ClientSize = new System.Drawing.Size(766, 404);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.answerLabel);
@@ -145,6 +145,8 @@
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "showAssignedTicket";
             this.Text = "showTicket";
             this.ResumeLayout(false);

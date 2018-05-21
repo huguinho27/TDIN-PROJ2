@@ -127,6 +127,8 @@
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.subjectLabel);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "createSubTicket";
             this.Text = "createSubTicket";
             this.ResumeLayout(false);

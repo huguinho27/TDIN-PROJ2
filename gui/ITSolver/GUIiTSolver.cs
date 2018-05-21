@@ -183,7 +183,10 @@ namespace WindowsFormsApp1
                     ctrl = true;
              }
             if (ctrl == true)
+            {
                 wind.makeSubmitButtonUclickable();
+                wind.makeAnswerTextBoxUnavailable();
+            }
             refreshButton_Click(sender, e);
             wind.ShowDialog();
             refreshButton_Click(sender, e);

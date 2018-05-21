@@ -137,6 +137,8 @@
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "viewTicketWorker";
             this.Text = "viewTicketWorker";
             this.ResumeLayout(false);

@@ -27,6 +27,11 @@ namespace WindowsFormsApp1
             submitButton.Enabled = false;
         }
 
+        public void activateSubmitButton()
+        {
+            submitButton.Enabled = true;
+        }
+
         public void changeStatusText(string newText)
         {
             this.statusTextBox.Text = newText;
@@ -56,6 +61,11 @@ namespace WindowsFormsApp1
         public void makeAnswerTextBoxUnavailable()
         {
             answerTextBox.Enabled = false;
+        }
+
+        public void activateAnswerTextBox()
+        {
+            answerTextBox.Enabled = true;
         }
 
         private void issueSubTicketButton_Click(object sender, EventArgs e)
@@ -96,10 +106,15 @@ namespace WindowsFormsApp1
                     ctrl = true;
             }
 
-            if (ctrl == true)
+            if (ctrl)
             {
                 makeSubmitButtonUclickable();
                 makeAnswerTextBoxUnavailable();
+            }
+            else
+            {
+                activateAnswerTextBox();
+                activateSubmitButton();
             }
         }
 

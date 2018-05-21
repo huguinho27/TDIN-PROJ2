@@ -171,6 +171,8 @@
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.nameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Register";
             this.Text = "Register";
             this.ResumeLayout(false);

@@ -177,6 +177,8 @@
             this.Controls.Add(this.unassignedTicketsLabel);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.assignedTicketsLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "GUIiTSolver";
             this.Text = "GUIiTSolver";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GUIiTSolver_FormClosed);

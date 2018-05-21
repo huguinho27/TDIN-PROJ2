@@ -47,6 +47,7 @@ namespace Common
                     "Seriously, what?",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Question);
+            this.Hide();
         }
     }
 }

@@ -116,6 +116,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.emailLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
