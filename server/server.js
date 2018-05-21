@@ -20,6 +20,14 @@ mongo.connectToServer((err1) =>
     {
         console.log("Connected to MongoDB");
         mongo.ensureUsersIndex();
+
+	//Connection to rabbit is done here because rabbit needs mongo connection
+	rabbit.connect((err2, conn) =>
+	{
+	    if(err2 !== null && conn === null) console.error("Failed to create Rabbit channel");
+	    else console.log("Connected to RabbitMQ");
+	});
+
     }
 });
 
@@ -29,12 +37,6 @@ nodemailer.connectNodemailer((account) =>
     else console.log("Connected to nodemailer with account " + account.transporter.options.auth.user + " " + account.transporter.options.auth.pass);
 });
 
-rabbit.connect((err2, conn) =>
-{
-    if(err2 !== null && conn === null) console.error("Failed to create Rabbit channel");
-    else console.log("Connected to RabbitMQ");
-    rabbit.send("general kenobi", (fail, sent) => {});
-});
 
 app.listen(port, (err) =>
 {
