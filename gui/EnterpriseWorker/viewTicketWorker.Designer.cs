@@ -37,11 +37,15 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.solverNameTextBox = new System.Windows.Forms.TextBox();
+            this.solverNameLabel = new System.Windows.Forms.Label();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // answerTextBox
             // 
-            this.answerTextBox.Location = new System.Drawing.Point(165, 260);
+            this.answerTextBox.Location = new System.Drawing.Point(165, 337);
             this.answerTextBox.Multiline = true;
             this.answerTextBox.Name = "answerTextBox";
             this.answerTextBox.ReadOnly = true;
@@ -52,7 +56,7 @@
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.answerLabel.Location = new System.Drawing.Point(75, 260);
+            this.answerLabel.Location = new System.Drawing.Point(75, 337);
             this.answerLabel.Name = "answerLabel";
             this.answerLabel.Size = new System.Drawing.Size(62, 20);
             this.answerLabel.TabIndex = 36;
@@ -63,7 +67,7 @@
             this.statusTextBox.Location = new System.Drawing.Point(165, 92);
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.ReadOnly = true;
-            this.statusTextBox.Size = new System.Drawing.Size(110, 20);
+            this.statusTextBox.Size = new System.Drawing.Size(141, 20);
             this.statusTextBox.TabIndex = 35;
             // 
             // statusLabel
@@ -78,7 +82,7 @@
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(165, 171);
+            this.descriptionTextBox.Location = new System.Drawing.Point(165, 248);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ReadOnly = true;
@@ -89,7 +93,7 @@
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(53, 171);
+            this.descriptionLabel.Location = new System.Drawing.Point(53, 248);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
             this.descriptionLabel.TabIndex = 32;
@@ -97,7 +101,7 @@
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(165, 129);
+            this.titleTextBox.Location = new System.Drawing.Point(165, 206);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.ReadOnly = true;
             this.titleTextBox.Size = new System.Drawing.Size(534, 20);
@@ -107,7 +111,7 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(99, 127);
+            this.titleLabel.Location = new System.Drawing.Point(99, 204);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(38, 20);
             this.titleLabel.TabIndex = 30;
@@ -123,11 +127,51 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "View Ticket";
             // 
+            // solverNameTextBox
+            // 
+            this.solverNameTextBox.Location = new System.Drawing.Point(165, 128);
+            this.solverNameTextBox.Name = "solverNameTextBox";
+            this.solverNameTextBox.ReadOnly = true;
+            this.solverNameTextBox.Size = new System.Drawing.Size(141, 20);
+            this.solverNameTextBox.TabIndex = 39;
+            // 
+            // solverNameLabel
+            // 
+            this.solverNameLabel.AutoSize = true;
+            this.solverNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.solverNameLabel.Location = new System.Drawing.Point(38, 126);
+            this.solverNameLabel.Name = "solverNameLabel";
+            this.solverNameLabel.Size = new System.Drawing.Size(99, 20);
+            this.solverNameLabel.TabIndex = 38;
+            this.solverNameLabel.Text = "Solver Name";
+            // 
+            // dateTextBox
+            // 
+            this.dateTextBox.Location = new System.Drawing.Point(165, 166);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.ReadOnly = true;
+            this.dateTextBox.Size = new System.Drawing.Size(141, 20);
+            this.dateTextBox.TabIndex = 41;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 164);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 20);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Date of Creation";
+            // 
             // viewTicketWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 372);
+            this.ClientSize = new System.Drawing.Size(800, 439);
+            this.Controls.Add(this.dateTextBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.solverNameTextBox);
+            this.Controls.Add(this.solverNameLabel);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.statusTextBox);
@@ -156,5 +200,9 @@
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox solverNameTextBox;
+        private System.Windows.Forms.Label solverNameLabel;
+        private System.Windows.Forms.TextBox dateTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

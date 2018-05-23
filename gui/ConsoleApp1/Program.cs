@@ -62,7 +62,7 @@ public class WebRequestPost
             //Enviar
             WebResponse webResponse = webRequest.GetResponse();
 
-            //Receber e fechar
+            //Receber e dtr
             string responseData;
             using (Stream stream = webResponse.GetResponseStream())
             {
@@ -91,6 +91,7 @@ public class WebRequestPost
             return serializer.Deserialize<T>(responseExceptionData);
         }
     }
+    
 }
 
 
@@ -257,6 +258,7 @@ public class ResponseSingleSecondaryQuestion : Response
     public string answer { get; set; }
     public string id { get; set; }
     public string troubleTicketId { get; set; }
+    public string date { get; set; }
 }
 
 /**

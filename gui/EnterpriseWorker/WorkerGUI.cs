@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
 
         private void WorkerGUI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void IDLabel_Click(object sender, EventArgs e)
@@ -94,6 +94,8 @@ namespace WindowsFormsApp1
             window.changeTitleText(response.title);
             window.changeDescriptionText(response.description);
             window.changeAnswerText(response.answer);
+            window.changeDateTextBox(response.date);
+            window.changeSolverNameText(response.solverName);
             window.Show();
         }
 

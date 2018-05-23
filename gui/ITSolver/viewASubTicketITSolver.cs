@@ -40,7 +40,15 @@ namespace WindowsFormsApp1
         public void changeAnswerText(string newText)
         {
             this.answerTextBox.Text = newText;
-            this.answerTextBox.Enabled = false;
+        }
+
+        public void changeDateText(string epochTime)
+        {
+            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            double d = double.Parse(epochTime);
+            DateTime t = dt.ToLocalTime().AddMilliseconds(d + 3600000);
+            dateTextBox.Text = t.ToString();
+            dateTextBox.Enabled = false;
         }
 
     }

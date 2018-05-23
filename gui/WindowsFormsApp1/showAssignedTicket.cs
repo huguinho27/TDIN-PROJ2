@@ -24,6 +24,22 @@ namespace WindowsFormsApp1
         public void unableStateText()
         {
             this.statusTextBox.Enabled = false;
+            statusTextBox.Enabled = false;
+        }
+
+        public void changeDateText(string epochTime)
+        {
+            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            double d = double.Parse(epochTime);
+            DateTime t = dt.ToLocalTime().AddMilliseconds(d + 3600000);
+            dateTextBox.Text = t.ToString();
+            dateTextBox.Enabled = false;
+        }
+
+        public void changeSolverNameText(string newText)
+        {
+            this.solverNameTextBox.Text = newText;
+            this.solverNameTextBox.Enabled = false;
         }
 
         public void unableTitleText()
@@ -44,16 +60,19 @@ namespace WindowsFormsApp1
         public void changeStateText(string msg)
         {
             this.statusTextBox.Text = msg;
+            statusTextBox.Enabled = false;
         }
 
         public void changeTitleText(string msg)
         {
             this.titleTextBox.Text = msg;
+            titleTextBox.Enabled = false;
         }
 
         public void changeDescriptionText(string msg)
         {
             this.descriptionTextBox.Text = msg;
+            descriptionTextBox.Enabled = false;
         }
 
         public void changeAnswerText(string msg)

@@ -31,6 +31,11 @@ namespace WindowsFormsApp1
             refresh_Button();
         }
 
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Console.WriteLine("Entrou na funcao da exception");
+        }
+
         public void newSecondaryTicket(string id, string title, string state)
         {
             string[] row = { id , title, state };
@@ -67,7 +72,7 @@ namespace WindowsFormsApp1
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                Application.Exit();
+                Environment.Exit(Environment.ExitCode);
             }
        
             //Creating Channel
@@ -142,7 +147,7 @@ namespace WindowsFormsApp1
 
         private void GUIDeptSolver_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(Environment.ExitCode);
         }
 
 
@@ -169,6 +174,9 @@ namespace WindowsFormsApp1
             ticket.changeStateText(document["state"].ToString());
             ticket.changeTitleText(document["title"].ToString());
             ticket.changeDescriptionText(document["description"].ToString());
+            ticket.changeDateText(document["date"].ToString());
+            ticket.changeSolverNameText(document["name"].ToString());
+
             bool justWatchingTicket = false;
             try
             {
@@ -181,7 +189,8 @@ namespace WindowsFormsApp1
                 ticket.unableStateText();
                 ticket.unableTitleText();
             }
-            catch {
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
                 justWatchingTicket = false;
                 ticket.solved = false;
             }

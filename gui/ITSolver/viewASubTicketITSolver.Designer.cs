@@ -39,13 +39,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.departmentTextBox = new System.Windows.Forms.TextBox();
             this.departmentLabel = new System.Windows.Forms.Label();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.dateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // answerTextBox
             // 
-            this.answerTextBox.Location = new System.Drawing.Point(165, 283);
+            this.answerTextBox.Location = new System.Drawing.Point(165, 326);
             this.answerTextBox.Multiline = true;
             this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.ReadOnly = true;
             this.answerTextBox.Size = new System.Drawing.Size(534, 64);
             this.answerTextBox.TabIndex = 24;
             // 
@@ -53,7 +56,7 @@
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.answerLabel.Location = new System.Drawing.Point(75, 283);
+            this.answerLabel.Location = new System.Drawing.Point(75, 326);
             this.answerLabel.Name = "answerLabel";
             this.answerLabel.Size = new System.Drawing.Size(62, 20);
             this.answerLabel.TabIndex = 21;
@@ -63,7 +66,7 @@
             // 
             this.statusTextBox.Location = new System.Drawing.Point(165, 115);
             this.statusTextBox.Name = "statusTextBox";
-            this.statusTextBox.Size = new System.Drawing.Size(110, 20);
+            this.statusTextBox.Size = new System.Drawing.Size(150, 20);
             this.statusTextBox.TabIndex = 20;
             // 
             // statusLabel
@@ -78,7 +81,7 @@
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(165, 194);
+            this.descriptionTextBox.Location = new System.Drawing.Point(165, 237);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(534, 64);
@@ -88,7 +91,7 @@
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(53, 194);
+            this.descriptionLabel.Location = new System.Drawing.Point(53, 237);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
             this.descriptionLabel.TabIndex = 17;
@@ -96,7 +99,7 @@
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(165, 152);
+            this.titleTextBox.Location = new System.Drawing.Point(165, 195);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(534, 20);
             this.titleTextBox.TabIndex = 16;
@@ -105,7 +108,7 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(104, 152);
+            this.titleLabel.Location = new System.Drawing.Point(104, 195);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(38, 20);
             this.titleLabel.TabIndex = 15;
@@ -126,7 +129,7 @@
             // 
             this.departmentTextBox.Location = new System.Drawing.Point(165, 77);
             this.departmentTextBox.Name = "departmentTextBox";
-            this.departmentTextBox.Size = new System.Drawing.Size(110, 20);
+            this.departmentTextBox.Size = new System.Drawing.Size(150, 20);
             this.departmentTextBox.TabIndex = 26;
             // 
             // departmentLabel
@@ -139,11 +142,30 @@
             this.departmentLabel.TabIndex = 25;
             this.departmentLabel.Text = "Department";
             // 
+            // dateTextBox
+            // 
+            this.dateTextBox.Location = new System.Drawing.Point(165, 153);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.Size = new System.Drawing.Size(150, 20);
+            this.dateTextBox.TabIndex = 30;
+            // 
+            // dateLabel
+            // 
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(16, 151);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(126, 20);
+            this.dateLabel.TabIndex = 29;
+            this.dateLabel.Text = "Date of Creation";
+            // 
             // viewASubTicketITSolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 383);
+            this.ClientSize = new System.Drawing.Size(800, 438);
+            this.Controls.Add(this.dateTextBox);
+            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.departmentTextBox);
             this.Controls.Add(this.departmentLabel);
             this.Controls.Add(this.answerTextBox);
@@ -176,5 +198,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox departmentTextBox;
         private System.Windows.Forms.Label departmentLabel;
+        private System.Windows.Forms.TextBox dateTextBox;
+        private System.Windows.Forms.Label dateLabel;
     }
 }

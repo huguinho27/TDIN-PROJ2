@@ -83,7 +83,6 @@
             this.nameLabel.Size = new System.Drawing.Size(51, 20);
             this.nameLabel.TabIndex = 12;
             this.nameLabel.Text = "Name";
-            this.nameLabel.Click += new System.EventHandler(this.nameLabel_Click);
             // 
             // departmentLabel
             // 

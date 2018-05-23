@@ -21,11 +21,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        public void nameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public void changeNameLabelText(string newText)
         {
             nameLabel.Text = newText;
@@ -85,7 +80,7 @@ namespace WindowsFormsApp1
 
         private void GUIiTSolver_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void GUIiTSolver_Load(object sender, EventArgs e)
@@ -128,8 +123,6 @@ namespace WindowsFormsApp1
             wind.ticketId = this.unassignedTicketsList.SelectedItems[0].SubItems[0].Text;
             bool ctrl = false;
 
-            
-
             //--------------------------------------------
             //Request information for the clicked trouble ticket
             //--------------------------------------------
@@ -155,6 +148,8 @@ namespace WindowsFormsApp1
             wind.changeDescriptionText(response2.description);
             wind.changeStatusText(response2.state);
             wind.changeTitleText(response2.title);
+            wind.changeAuthorText(response2.name);
+            wind.changeDateText(response2.date);
 
             //--------------------------------------------
             //Request for secondary questions
@@ -225,9 +220,21 @@ namespace WindowsFormsApp1
             //--------------------------------------------
 
             wind.changeAnswerText(response2.answer);
+            if (response2.answer != null)
+            {
+                if (!response2.answer.Equals(""))
+                {
+                    wind.makeAnswerTextBoxUnavailable();
+                    wind.makeSubmitButtonUclickable();
+                    wind.makeSubmitIssueButtonUnclickable();
+                    wind.makeRefreshButtonUnclickable();
+                }
+            }
             wind.changeDescriptionText(response2.description);
             wind.changeStatusText(response2.state);
             wind.changeTitleText(response2.title);
+            wind.changeAuthorText(response2.name);
+            wind.changeDateText(response2.date);
 
             //--------------------------------------------
             //Request for secondary questions
